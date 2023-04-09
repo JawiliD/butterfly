@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
+   
 </head>
 <body>
     <div class="right-header">
-        <img class="logo " src="image/logo.png" alt="logo">
+        <img class="logo " src="image/logo2.png" alt="logo">
         <ul>
             <li class="admin"><a href=""><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
             <li><a href=""><h4>Butterfly</h4></a></li>
@@ -28,6 +30,7 @@
             <a href="">STATISTICS</a>
             <a href="">BUTTERFLY</a>        
     </div>
+    
     
 </body>
 </html>
