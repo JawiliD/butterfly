@@ -31,8 +31,8 @@ body{
     color: white;;
 }
 .logo{
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 200px;
+    max-height: 200px;   
     margin: auto;
     padding-top: 20px;
     display: block;
@@ -78,5 +78,6 @@ hr{
     border-radius: 0em 0em 1em 1em;
     color: white;
 }
+
 
 
