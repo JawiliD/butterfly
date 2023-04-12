@@ -1,5 +1,7 @@
 body{
     box-sizing: inherit;
+    height: 100%;
+    width: 100%;
     margin: 0px;
 }
 .right-header{
@@ -8,8 +10,7 @@ body{
     width: 200px;
     height: 100vh;
     background-color: #3C6E71;
-    position: sticky;
-    top: 0;
+    position: fixed;    
     text-align: center;
 }
 .right-header ul { 
@@ -31,8 +32,8 @@ body{
     color: white;;
 }
 .logo{
-    max-width: 200px;
-    max-height: 200px;   
+    max-width: 150px;
+    max-height: 150px;      
     margin: auto;
     padding-top: 20px;
     display: block;
@@ -56,6 +57,14 @@ body{
     font-family: Arial, Helvetica, sans-serif; 
     width: 75%;
     
+    top: 0;
+}
+
+.penro-logo{
+    
+    max-width: 100px;
+    max-height: 100px;
+    float: right;   
 }
 hr{
     border: 3px solid black;
@@ -79,5 +88,50 @@ hr{
     color: white;
 }
 
+.home{
+    background-color:#353535;
+    border-radius: 0em 0em 1em 1em;
+    color: white;
+    
+}
 
+/* content area */
+
+.content{
+   position: absolute;
+   padding: 2em;
+    top:200px;
+    left: 250px;
+    width:70%;    
+    background-color: rgba(111, 158, 98, 0.463);
+    overflow: hidden;
+}
+table {
+    border-spacing: 0px;
+    margin: auto;
+    margin-top: 10%;
+    font-family: sans-serif;
+    border-radius: 2em;
+    
+}
+table th{
+    border: 1px solid #000000;
+    padding: 1em;
+    width: 20%;
+    font-weight: bold;
+    background-color: #284B63;
+    color: white;
+    
+    
+}
+table td{
+    border: 1px solid #000000;
+    padding: 1em;
+    width: 20%;
+    font-weight: bold;
+    background-color: #D9D9D9;
+    color: black;
+    
+    
+}
 
