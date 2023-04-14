@@ -88,11 +88,14 @@ hr{
     color: white;
 }
 
-.home{
+/* #home{
     background-color:#353535;
     border-radius: 0em 0em 1em 1em;
-    color: white;
     
+    
+} */
+#home a{
+    color: white;
 }
 
 /* content area */
@@ -106,18 +109,19 @@ hr{
     background-color: rgba(111, 158, 98, 0.463);
     overflow: hidden;
 }
+
+
 table {
     border-spacing: 0px;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     font-family: sans-serif;
     border-radius: 2em;
     
 }
 table th{
     border: 1px solid #000000;
-    padding: 1em;
-    width: 20%;
+    padding: 1em;    
     font-weight: bold;
     background-color: #284B63;
     color: white;
@@ -127,11 +131,55 @@ table th{
 table td{
     border: 1px solid #000000;
     padding: 1em;
-    width: 20%;
+   
     font-weight: bold;
     background-color: #D9D9D9;
     color: black;
     
     
+}
+.table-one{
+    margin: 0;
+    margin-bottom: 5em;
+    margin-top: 3em;
+}
+.trans-butterfly-table,.ltr-permit-table{
+    margin-bottom: 10em;
+    width: 850px;
+    height: 400px;
+    overflow:scroll;    
+    margin: auto;
+}
+.trans-butterfly form table, .ltr-permit form table{
+    margin: 0px;
+    
+}
+
+.trans-butterfly form table tr th, .ltr-permit form table tr th{
+    border: none;
+    background-color: rgba(113, 70, 70, 0);
+    width: 20%;
+    padding: .5em;    
+    color: black;
+    margin:0px;
+    
+}
+
+
+.trans-butterfly-table table,.ltr-permit-table table{
+    border-collapse: collapse;   
+    
+}
+.trans-butterfly-table table th,.trans-butterfly-table table td,.ltr-permit-table table th,.ltr-permit-table table td{
+    max-width: 850px;    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;   
+    
+}
+
+.trans-butterfly-table table thead,.ltr-permit-table table thead{
+    position: sticky;
+    inset-block-start: 0;
 }
 
