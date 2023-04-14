@@ -70,7 +70,7 @@
             </table>
         </form>
         <div class="table-div">
-            <div class="trans-butterfly-table">
+            <div class="report-table">
             <table >
                     <thead>
                         <tr>
