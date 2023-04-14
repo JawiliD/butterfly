@@ -75,7 +75,7 @@ hr{
     display: inline-block;
     margin-right: 2em;
     padding: 1em;
-    margin: 0;
+    margin: 0em;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
@@ -88,17 +88,8 @@ hr{
     color: white;
 }
 
-/* #home{
-    background-color:#353535;
-    border-radius: 0em 0em 1em 1em;
-    
-    
-} */
-#home a{
-    color: white;
-}
-
 /* content area */
+
 
 .content{
    position: absolute;
@@ -106,8 +97,24 @@ hr{
     top:200px;
     left: 250px;
     width:70%;    
-    background-color: rgba(111, 158, 98, 0.463);
-    overflow: hidden;
+    /* background-color: rgba(111, 158, 98, 0.463); */
+    overflow: hidden;    
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* report */
+
+.butterfly{
+    background-color: #353535;    
+}
+
+#home,#matrix,#statistics,#butterfly{
+    background-color: #353535;
+    border-radius: 0em 0em 1em 1em;
+    color: white;
+}
+.line-dot{
+    border: 1px;
 }
 
 
@@ -130,47 +137,73 @@ table th{
 }
 table td{
     border: 1px solid #000000;
-    padding: 1em;
-   
+    padding: 1em;   
     font-weight: bold;
     background-color: #D9D9D9;
     color: black;
     
     
 }
-.table-one{
+
+.table-div{
     margin: 0;
     margin-bottom: 5em;
     margin-top: 3em;
 }
-.trans-butterfly-table,.ltr-permit-table{
+.report-table
+{
     margin-bottom: 10em;
     width: 850px;
     height: 400px;
     overflow:scroll;    
     margin: auto;
 }
-.trans-butterfly form table, .ltr-permit form table{
-    margin: 0px;
+
+.report form table input,
+#search-bar,
+.amount{
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 1em;
+    padding: .5em;
+    
+
+}
+.report form table button{
+    padding: 1em 1em;
+    border: none;
+    border-radius: .5em;
+    color: white;
+    font-weight: bold;
+    background-color: #353535;
     
 }
+#filter:hover{
+    background-color: #9D8401;
+    
+    
+}
+#view-doc:hover{
+    background-color: #027A00;
+}
 
-.trans-butterfly form table tr th, .ltr-permit form table tr th{
+.report form table tr th{
     border: none;
     background-color: rgba(113, 70, 70, 0);
     width: 20%;
-    padding: .5em;    
-    color: black;
+    padding: .5em ;    
+    color: #000000;
     margin:0px;
     
 }
 
 
-.trans-butterfly-table table,.ltr-permit-table table{
+.report-table table{
     border-collapse: collapse;   
     
 }
-.trans-butterfly-table table th,.trans-butterfly-table table td,.ltr-permit-table table th,.ltr-permit-table table td{
+.report-table table th,
+.report-table table td{
     max-width: 850px;    
     overflow: hidden;
     text-overflow: ellipsis;
@@ -178,8 +211,40 @@ table td{
     
 }
 
-.trans-butterfly-table table thead,.ltr-permit-table table thead{
+.report-table table thead{
     position: sticky;
     inset-block-start: 0;
 }
+
+.search table{
+    width: 100%;
+    margin: 0px;   
+} 
+.search table tr th {
+    border: none;
+    background-color: rgba(113, 70, 70, 0);    
+    padding: .5em ;       
+    color: #000000;
+    margin:0px;
+    text-align:left;
+}
+
+#title {
+    width: 60%;
+}
+
+
+#search-button{
+    background-color: #284B63;
+    color: white;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 1em;
+}
+
+#search-button:hover{
+    background-color: #353535;
+}
+
+
 
