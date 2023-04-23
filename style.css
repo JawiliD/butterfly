@@ -129,14 +129,14 @@ hr{
     top:200px;
     left: 250px;
     width:70%;    
-    background-color: rgba(111, 158, 98, 0.463);
+    /* background-color: rgba(111, 158, 98, 0.463); */
     overflow: hidden;    
     font-family: Arial, Helvetica, sans-serif;
 }
 
 /* report */
 
-.butterfly,.admin{
+.butterfly,#admin,#report-menu{
     background-color: #353535;    
 }
 

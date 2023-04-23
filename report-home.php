@@ -29,9 +29,9 @@ $database = "data";
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
             <li class="admin"><a href=""><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
-            <li class="butterfly"><h4>Butterfly</h4></li>
+            <li ><h4>Butterfly</h4></li>
             <li><a href=""><h4>Wildlife Permit</h4></a></li>            
-            <li><a href=""><h4>Report</h4></a></li>
+            <li id="report-menu"><a href=""><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -70,6 +70,7 @@ $database = "data";
             </table>
         </form>
     </div>    
+    
     <div class="chartCard">
       <div class="chartBox">       
         <canvas id="myChart"></canvas>
