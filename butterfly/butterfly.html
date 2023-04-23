@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
+   
+</head>
+<body>
+    <div class="right-header">
+        <img class="logo " src="image/logo.png" alt="logo">
+        <ul>
+            <li class="admin"><a href=""><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
+            <li class="butterfly"><a href=""><h4>Butterfly</h4></a></li>
+            <li><a href=""><h4>Wildlife Permit</h4></a></li>
+            <li><a href=""><h4>Status</h4></a></li>
+            <li><a href=""><h4>Report</h4></a></li>
+        </ul>
+    </div>
+    <div class="top-header">        
+            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
+            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>  
+         <hr><br>
+         <div class="Sbar"> 
+             <button type="button" id="myBtn" class="Add" href="" >ADD BUTTERFLY SPECIES </button>
+             <span class="sh"><input  type="searchs"  placeholder="SEARCH" >
+            </span></div>
+        <div class="list"><h1 >LIST OF BUTTERFLIES<hr class="line"></h1></div>
+ <div class="g">      
+  <div class="gallery ">
+    <div class="card">
+      <h3>familyname</h3>
+      <h3>(commonname)</h3>
+      <div class="size">
+        <img src="uploadImage/Hesperia_comma-01_(xndr).jpg" alt="">
+      </div>
+      <div class="d">
+        <p class="dis">Small, darting flight; clubs on antennae hooked backwards</p>
+      </div>
+      <div class="v">
+      <button type="button" id="view" class="vi">View</button>
+    </div>
+    </div>
+
+    <div class="card">
+      <h3>familyname</h3>
+      <h3>(commonname)</h3>
+      <div class="size">
+        <img src="uploadImage/Hesperia_comma-01_(xndr).jpg" alt="">
+      </div>
+      <div class="d">
+        <p class="dis">Small, darting flight; clubs on antennae hooked backwards</p>
+      </div>
+      <div class="v">
+      <button type="button" id="view" class="vi">View</button>
+    </div>
+    </div>
+
+    <div class="card">
+      <h3>familyname</h3>
+      <h3>(commonname)</h3>
+      <div class="size">
+        <img src="uploadImage/Hesperia_comma-01_(xndr).jpg" alt="">
+      </div>
+      <div class="d">
+        <p class="dis">Small, darting flight; clubs on antennae hooked backwards</p>
+      </div>
+      <div class="v">
+      <button type="button" id="view" class="vi">View</button>
+    </div>
+    </div>
+
+    <div class="card">
+      <h3>familyname</h3>
+      <h3>(commonname)</h3>
+      <div class="size">
+        <img src="uploadImage/Hesperia_comma-01_(xndr).jpg" alt="">
+      </div>
+      <div class="d">
+        <p class="dis">Small, darting flight; clubs on antennae hooked backwards</p>
+      </div>
+      <div class="v">
+      <button type="button" id="view" class="vi">View</button>
+    </div>
+    </div>
+
+  </div>
+</div> 
+<!-- add The Modal -->
+<div id="myModal" class="modal fade" tabindex="-1"  aria-hidden="true" >
+
+  <!-- Modal content -->
+  <div class="modal-content"> 
+    <div class="container1">
+      <span class="close">&times;</span>
+      <input type="file" id="file" accept="image/*" hidden>
+      <div class="img-area" data-img="">
+        <i class='bx bxs-folder-plus icon'></i>
+      </div>
+      <div class="up"> 
+      <button class="select-image">Upload</button>
+        </div><br>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Species Type</label><br>
+          <input type="text" name="speciestype" placeholder="Species Type" class="form-control" required="required" />
+        </div><br>
+        <div class="form-group">
+          <label>Class Name</label><br>
+          <input type="text" name="classname" placeholder="Class Name" class="form-control" required="required" />
+        </div><br>
+        <div class="form-group">
+          <label>Family Name</label><br>
+          <input type="text" name="familyname" placeholder="Family Name" class="form-control" required="required" />
+        </div><br>
+        <div class="form-group">
+          <label>Common Name</label><br>
+          <input type="text" name="commonname" placeholder="Common Name" class="form-control" required="required" />
+        </div><br>
+        <div class="form-group">
+          <label>Scientifin Name</label><br>
+          <input type="text" name="scientificname" placeholder="Scientifin Name" class="form-control" required="required" />
+        </div><br>
+        <div class="form-group">
+          <label>Type of Specimen</label><br>
+          <input type="text" name="typeofspecimen" placeholder="Type of Specimen" class="form-control" required="required" />
+        </div><br>
+        <div class="form-group">
+          <label>Quantity</label><br>
+          <input type="text" name="quantity" placeholder="Quantity" class="form-control" required="required" />
+        </div><br>
+        <div class="form-group">
+          <label>Description</label><br>
+          <input type="text" name="description" placeholder="Description" class="form-control" required="required" />
+        </div>
+      </div><br>
+      <div class="modal-footer">
+        <button type="submit" name="save" class="btn btn-primary">Save</button>
+        <button id="cancel" class="btn btn-secondary" type="button" data-dismiss="close">Cancel</button>
+      </div>
+    </div>
+ </div>
+</div> 
+
+<div id="myView" class="modal fade" tabindex="-1"  aria-hidden="true" >
+
+  <!-- Modal content -->
+  <div class="modal-content"> 
+    <div class="container1">
+      <span class="close1">&times;</span>
+      <div class="img-area"><img src="uploadImage/Hesperia_comma-01_(xndr).jpg" alt="">
+        <i class='bx bxs-folder-plus icon'></i>
+      </div>
+      <div class="up"> 
+        </div><br>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="ti">Species Type:</label><br>
+          <p class="de">fff</p>
+        </div><br>
+        <div class="form-group">
+          <label class="ti">Class Name:</label><br>
+          <p class="de">fff</p>
+        </div><br>
+        <div class="form-group">
+          <label class="ti">Family Name:</label><br>
+          <p class="de">ff</p>
+        </div><br>
+        <div class="form-group">
+          <label class="ti">Common Name:</label><br>
+          <p class="de">ff</p>
+        </div><br>
+        <div class="form-group">
+          <label class="ti">Scientifin Name:</label><br>
+          <p class="de">ff</p>
+        </div><br>
+        <div class="form-group">
+          <label class="ti">Type of Specimen:</label><br>
+          <p class="de">ff</p>
+        </div><br>
+        <div class="form-group">
+          <label class="ti">Quantity:</label><br>
+          <p class="de">ff</p>
+        </div><br>
+        <div class="form-group">
+          <label class="ti">Description:</label><br>
+          <p class="de">Small, darting flight; clubs on antennae hooked backwards</p>
+        </div>
+      </div><br>
+      <div class="modal-footer1">
+        <button type="" name="t" class="edit">Edit</button>
+        <button type=""class="del"  >Delete</button>
+      </div>
+    </div>
+ </div>
+</div> 
+
+ <script src="script.js"></script>
+ <script src="script1.js"></script>
+
+  
+</body1>
+</html>

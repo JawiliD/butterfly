@@ -30,8 +30,7 @@ $database = "data";
         <ul>
             <li class="admin"><a href=""><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
             <li class="butterfly"><h4>Butterfly</h4></li>
-            <li><a href=""><h4>Wildlife Permit</h4></a></li>
-            <li><a href=""><h4>Status</h4></a></li>
+            <li><a href=""><h4>Wildlife Permit</h4></a></li>            
             <li><a href=""><h4>Report</h4></a></li>
         </ul>
     </div>
@@ -63,8 +62,7 @@ $database = "data";
                         <label>To Date</label>
                         <input type="date" name="to_date" onchange="endDateFilter(this)">
                     </th>
-                    <th>
-                        <button id="filter" type="submit">Filter</button>
+                    <th>                        
                     </th>   
                     <th></th>                                  
                     <th><h4 class="amount">Total Amount</h4></th>

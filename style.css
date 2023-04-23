@@ -3,6 +3,7 @@ body{
     height: 100%;
     width: 100%;
     margin: 0px;
+    /* position: relative; */
 }
 .right-header{
     z-index: 5;
@@ -55,8 +56,7 @@ body{
     top: 0;
     margin-left: 250px;
     font-family: Arial, Helvetica, sans-serif; 
-    width: 75%;
-    
+    width: 75%;       
     top: 0;
 }
 
@@ -88,6 +88,39 @@ hr{
     color: white;
 }
 
+/* DROPDOWN */
+
+#dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  #dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #353535;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 1em;
+    z-index: 1;
+  }
+  
+  #dropdown-content a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;    
+  }
+  
+  #dropdown-content a:hover {
+    background-color: #3C6E71;
+    border-radius: 1em;
+    
+}
+
+#dropdown:hover #dropdown-content {
+  display: block;
+}
 /* content area */
 
 .content{
@@ -103,11 +136,11 @@ hr{
 
 /* report */
 
-.butterfly{
+.butterfly,.admin{
     background-color: #353535;    
 }
 
-#home,#matrix,#statistics,#butterfly{
+#home,#matrix,#statistics,#butterfly,#application{
     background-color: #353535;
     border-radius: 0em 0em 1em 1em;
     color: white;
@@ -245,5 +278,13 @@ table td{
     background-color: #353535;
 }
 
+/* admin-application-submit */
+
+#ltr-permit{
+    background-color:#284B63;
+}
+#ltr-permit:hover{
+   background-color: #353535; 
+}
 
 
