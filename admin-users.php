@@ -13,10 +13,10 @@
     <div class="right-header">
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
-            <li class="admin"><a href="admin-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
+            <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></li>
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
-            <li><a href=""><h4>Wildlife Permit</h4></a></l>            
-            <li id="report-menu"><a href=""><h4>Report</h4></a></li>
+            <li><a href=""><h4>Wildlife Permit</h4></a></li>            
+            <li><a href="report-home.php"><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -24,10 +24,19 @@
             <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>          
 
         <hr>        
-            <a href="report-home.php">HOME</a>
-            <a id="matrix" href="">MATRIX</a>
-            <a href="report-statistics.php">STATISTICS</a>
-            <a href="report-butterfly.php">BUTTERFLY</a>        
+            <a href="admin-profile.php">PROFILE</a>
+            <div id="dropdown">
+                <a >APPLICATION</a>
+                <div id="dropdown-content">
+                    <a href="admin-application-submit.php">SUBMITTED</a>
+                    <a href="admin-application-return.php">RETURNED</a>
+                    <a href="admin-application-accept.php">ACCEPTED</a>
+                    <a href="admin-application-release.php">RELEASED</a>
+                    <a href="admin-application-expire.php">EXPIRED</a>
+                    <a href="admin-application-use.php">USED</a>
+                </div>
+            </div>            
+            <a id="application" href="admin-users.php">OTHER USERS</a>                   
     </div>
 
     <div class="content"> 
@@ -38,7 +47,7 @@
     <div class="search">
         <table class="search-table">
             <tr>                
-                <th id="title"><h2>Matrix</h2></th>                                                                            
+                <th id="title"><h2>Administrator</h2></th>                                                                            
                 <th>
                     <form > 
                         <input type="search" id="search-bar" name="q" placeholder="Search...">
@@ -52,19 +61,11 @@
             <table>
                 <tr>
                     <th>
-                        <label>From Date</label>
-                        <input type="date" name="from_date">
+                    <button id="ltr-permit" type="submit">ADD ADMINISTRATOR</button>
                     </th>
-                    <th>
-                        <label>To Date</label>
-                        <input type="date" name="from_date">
-                    </th>
-                    <th>
-                        <button id="filter" type="submit">Filter</button>
-                    </th>
-                    <th></th>
-                    <th>
-                        <button id="view-doc" type="submit">View Document</button>
+                    <th>                        
+                    </th>                    
+                    <th>                        
                     </th>
                 </tr>
             </table>
@@ -74,21 +75,14 @@
             <table >
                     <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th>TYPE OF PERMIT</th>
-                            <th colspan="2">Information</th>                                     
-                            <th colspan="2">PENRO</th>                                            
-                        </tr>
-                        <tr>
-                            <th>Region</th>
-                            <th>Office</th>
-                            <th>LTP<br>(1-2 days)</th>
-                            <th>NAme of Permittee<br>(Name, MI, Surname)</th>                                     
-                            <th>Permit Number<br>(xxx-####)</th>                                            
-                            <th>LTP<br>Date Issued<br>(mm/dd/yyyy)</th>                                            
-                            <th>Date received<br>by Client<br>(mm/dd/yyyy)</th>                                            
-                        </tr>                        
+                            <th>ID NUMBER</th>
+                            <th>FULL NAME</th>
+                            <th>USERNAME</th>
+                            <th>EMAIL</th>                                     
+                            <th>ACTION</th>                                           
+                                                                  
+
+                        </tr>                                               
                     </thead>
                     <tbody>
                         <tr>
@@ -97,8 +91,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>                                                   
+                                                                             
                         </tr>
                         <tr>
                             <td ></td>
@@ -106,8 +99,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                         
                         </tr>
                         <tr>
                             <td ></td>
@@ -115,8 +107,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>           
+                                       
                         </tr>
                         <tr>
                             <td ></td>
@@ -124,8 +115,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                         
                         </tr>
                         <tr>
                             <td ></td>
@@ -133,8 +123,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                         
                         </tr>
                         <tr>
                             <td ></td>
@@ -142,8 +131,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                         
                         </tr>
                         <tr>
                             <td ></td>
@@ -151,8 +139,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                        
                         </tr>
                         <tr>
                             <td ></td>
@@ -160,8 +147,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                        
                         </tr>
                         <tr>
                             <td ></td>
@@ -169,8 +155,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                         
                         </tr>
                         <tr>
                             <td ></td>
@@ -178,8 +163,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                         
                         </tr>
                         <tr>
                             <td ></td>
@@ -187,8 +171,7 @@
                             <td ></td>
                             <td ></td>  
                             <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
+                                        
                         </tr>
                         </tbody>
                     </table>

@@ -14,9 +14,9 @@
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
             <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></li>
-            <li><a href=""><h4>Butterfly</h4></a></li>
+            <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href=""><h4>Wildlife Permit</h4></a></li>            
-            <li><a href=""><h4>Report</h4></a></li>
+            <li><a href="report-home.php"><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        

@@ -14,14 +14,14 @@
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
             <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></li>
-            <li><a href=""><h4>Butterfly</h4></a></li>
+            <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href=""><h4>Wildlife Permit</h4></a></li>            
-            <li><a href=""><h4>Report</h4></a></li>
+            <li><a href="report-home.php"><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
-            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>          
+            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>   
 
         <hr>        
             <a href="admin-profile.php">PROFILE</a>
@@ -80,7 +80,7 @@
                             <td ></td>  
                             <td ></td>              
                             <td ></td>              
-                            <td ></td>                                                   
+                            <td ><a href="generate-docs.php"><button>Generate</button></</td>                                                   
                         </tr>
                         <tr>
                             <td ></td>

@@ -15,11 +15,10 @@
     <div class="right-header">
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
-            <li class="admin"><a href=""><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
+            <li class="admin"><a href="admin-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
             <li class="butterfly"><a href=""><h4>Butterfly</h4></a></li>
-            <li><a href=""><h4>Wildlife Permit</h4></a></li>
-            <li><a href=""><h4>Status</h4></a></li>
-            <li><a href=""><h4>Report</h4></a></li>
+            <li><a href=""><h4>Wildlife Permit</h4></a></li>            
+            <li><a href="report-home.php"><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -28,26 +27,29 @@
          <hr><br>
          <div class="Sbar"> 
              <button type="button" id="myBtn" class="Add" href="" >ADD BUTTERFLY SPECIES </button>
-             <span class="sh"><input  type="searchs"  placeholder="SEARCH" >
-            </span></div>
+             <form > 
+                  <input type="search" id="search-bar" name="q" placeholder="Search...">
+                  <button id="search-button">SEARCH</button>
+              </form>
+            </div>
         <div class="list"><h1 >LIST OF BUTTERFLIES<hr class="line"></h1></div> 
         
   <div class="gallery">
   <?php
-    include 'config.php';
-     $cards = mysqli_query($con,"SELECT * FROM `bd`");
+    // include 'config.php';
+    //  $cards = mysqli_query($con,"SELECT * FROM `bd`");
 
-    while ($row = mysqli_fetch_array($cards)) {
-      echo '<div class="card">';
-      echo '<h3>' . $row['familyname'] . '</h3>';
-      echo  '<h3>'. $row['commonname'] .'</h3>';
-      echo '<div class="size">';
-      echo '<img src="' . $row['Image'] . '" alt="' . $row['commonname'] .'">';
-      echo '</div>';
-      echo '<p>' . $row['description'] . '</p>';
-      echo '<button href="view.php?id=' . $row['id'] . '" class="" >View</button>';
-      echo '</div>';
-      }
+    // while ($row = mysqli_fetch_array($cards)) {
+    //   echo '<div class="card">';
+    //   echo '<h3>' . $row['familyname'] . '</h3>';
+    //   echo  '<h3>'. $row['commonname'] .'</h3>';
+    //   echo '<div class="size">';
+    //   echo '<img src="' . $row['Image'] . '" alt="' . $row['commonname'] .'">';
+    //   echo '</div>';
+    //   echo '<p>' . $row['description'] . '</p>';
+    //   echo '<button href="view.php?id=' . $row['id'] . '" class="" >View</button>';
+    //   echo '</div>';
+    //   }
       ?>
   </div>
 
@@ -84,7 +86,7 @@
           <input type="text" name="commonname" placeholder="Common Name" class="form-control" required="required" />
         </div><br>
         <div class="form-group">
-          <label>Scientifin Name</label><br>
+          <label>Scientific Name</label><br>
           <input type="text" name="scientificname" placeholder="Scientifin Name" class="form-control" required="required" />
         </div><br>
         <div class="form-group">
