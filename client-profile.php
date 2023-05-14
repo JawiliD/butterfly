@@ -13,10 +13,8 @@
     <div class="right-header">
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
-            <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></li>
-            <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
-            <li><a href=""><h4>Wildlife Permit</h4></a></li>            
-            <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Name of Client</h4></li>
+            
         </ul>
     </div>
     <div class="top-header">        
@@ -25,18 +23,8 @@
 
         <hr>        
         <a id="profile">PROFILE</a>
-            <div id="dropdown">
-                <a>APPLICATION</a>
-                <div id="dropdown-content">
-                    <a href="admin-application-submit.php">SUBMITTED</a>
-                    <a href="admin-application-return.php">RETURNED</a>
-                    <a href="admin-application-accept.php">ACCEPTED</a>
-                    <a href="admin-application-release.php">RELEASED</a>
-                    <a href="admin-application-expire.php">EXPIRED</a>
-                    <a href="admin-application-use.php">USED</a>
-                </div>
-            </div>            
-            <a href="admin-users.php">OTHER USERS</a>       
+        <a href="client-application-status.php">APPLICATION</a>              
+        <a href="">REPORTS</a>       
     </div>
 
     <div class="content"> 

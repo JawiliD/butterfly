@@ -76,147 +76,32 @@
                         </tr>                                               
                     </thead>
                     <tbody>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>                                                   
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>           
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>           
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>      
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>        
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>   
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>           
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>    
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>         
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>   
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>           
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td> 
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
+                        <?php
+                        include 'config.php';
+                        $queryRelease="SELECT * FROM `ltr_permit` where status='release'";
+                        $sqlRelease=mysqli_query($con,$queryRelease);
+                        while($row = mysqli_fetch_array($sqlRelease)){
+                            echo '<tr>
+                                    <td >'. $row['id'].'</td>
+                                    <td >'. $row['date'].'</td>
+                                    <td ></td>
+                                    <td ></td>  
+                                    <td ></td>              
+                                    <td ></td>              
+                                    <td ></td>
+                                    <td ></td>              
+                                    <td ></td>              
+                                    <td ></td>             
+                                </tr>';
+                         }
+                            
+                        ?>
+                        
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    
-
-           
-
     </div>
     
     

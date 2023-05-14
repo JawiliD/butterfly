@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
@@ -25,90 +25,60 @@
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
             <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>  
          <hr><br>
+
+    
          <div class="Sbar"> 
-             <button type="button" id="myBtn" class="Add" href="" >ADD BUTTERFLY SPECIES </button>
+             <button type="button" id="myBtn" class="Add" ><a style="color:white;padding:0em;" href="add-butterfly.php">ADD BUTTERFLY SPECIES</a></button>
              <form > 
                   <input type="search" id="search-bar" name="q" placeholder="Search...">
                   <button id="search-button">SEARCH</button>
               </form>
             </div>
-        <div class="list"><h1 >LIST OF BUTTERFLIES<hr class="line"></h1></div> 
+        <div class="list"><h1 >LIST OF BUTTERFLIES</h1></div> 
         
-  <div class="gallery">
-  <?php
-    // include 'config.php';
-    //  $cards = mysqli_query($con,"SELECT * FROM `bd`");
+  <div class="table-div">
+      <div class="report-table">
+        <table>
+            <thead>
+              <tr>
+                <th>Species Type</th>
+                <th>Class Name</th>
+                <th>Family Name</th>
+                <th>Common Name</th>
+                <th>Scientific Name</th>
+                <th>Type of Specimen</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>        
+              <?php
+                include 'config.php';
+                
+                $sqlcontent = mysqli_query($con,"SELECT * FROM `butterfly`");
 
-    // while ($row = mysqli_fetch_array($cards)) {
-    //   echo '<div class="card">';
-    //   echo '<h3>' . $row['familyname'] . '</h3>';
-    //   echo  '<h3>'. $row['commonname'] .'</h3>';
-    //   echo '<div class="size">';
-    //   echo '<img src="' . $row['Image'] . '" alt="' . $row['commonname'] .'">';
-    //   echo '</div>';
-    //   echo '<p>' . $row['description'] . '</p>';
-    //   echo '<button href="view.php?id=' . $row['id'] . '" class="" >View</button>';
-    //   echo '</div>';
-    //   }
-      ?>
+                while ($row = mysqli_fetch_array($sqlcontent)) {
+                  echo '<tr>
+                          <td >' . $row['speciesType']. ' </td>
+                          <td >' . $row['className']. '</td>
+                          <td >' . $row['familyName']. '</td>
+                          <td >' . $row['commonName'].'</td> 
+                          <td >' . $row['scientificName'].'</td>                                  
+                          <td >' . $row['typeOfSpecimen'].'</td>              
+                          <td >' . $row['quantity'].'</td>             
+                          <td >' . $row['description'].'</td>             
+                          <td>        
+                              <button class="btn blueBtn"><a href="update-butterfly.php?update-butterfly-id='.$row['id'].'">Edit</a></button>                
+                              <button class="btn redBtn"><a href="delete.php?delete-butterfly-id='. $row['id'].'">Delete</a></button>
+                          </td>            
+                      </tr>';
+                 
+                  }
+                  ?>
+            </tbody>
+          </table>  
+      </div>
   </div>
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal fade" tabindex="-1"  aria-hidden="true" >
-
-  <!-- Modal content -->
-  <div class="modal-content"> 
-    <div class="container1">
-      <span class="close">&times;</span>
-      <input type="file" id="file" accept="image/*" hidden>
-      <div class="img-area" data-img="">
-        <i class='bx bxs-folder-plus icon'></i>
-      </div>
-      <div class="up"> 
-      <button class="select-image">Upload</button>
-        </div><br>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Species Type</label><br>
-          <input type="text" name="speciestype" placeholder="Species Type" class="form-control" required="required" />
-        </div><br>
-        <div class="form-group">
-          <label>Class Name</label><br>
-          <input type="text" name="classname" placeholder="Class Name" class="form-control" required="required" />
-        </div><br>
-        <div class="form-group">
-          <label>Family Name</label><br>
-          <input type="text" name="familyname" placeholder="Family Name" class="form-control" required="required" />
-        </div><br>
-        <div class="form-group">
-          <label>Common Name</label><br>
-          <input type="text" name="commonname" placeholder="Common Name" class="form-control" required="required" />
-        </div><br>
-        <div class="form-group">
-          <label>Scientific Name</label><br>
-          <input type="text" name="scientificname" placeholder="Scientifin Name" class="form-control" required="required" />
-        </div><br>
-        <div class="form-group">
-          <label>Type of Specimen</label><br>
-          <input type="text" name="typeofspecimen" placeholder="Type of Specimen" class="form-control" required="required" />
-        </div><br>
-        <div class="form-group">
-          <label>Quantity</label><br>
-          <input type="text" name="quantity" placeholder="Quantity" class="form-control" required="required" />
-        </div><br>
-        <div class="form-group">
-          <label>Description</label><br>
-          <input type="text" name="description" placeholder="Description" class="form-control" required="required" />
-        </div>
-      </div><br>
-      <div class="modal-footer">
-        <button type="submit" name="save" class="btn btn-primary">Save</a>
-        <button class="btn btn-secondary" type="button" data-dismiss="close">Cancel</button>
-      </div>
-    </div>
- </div>
-</div> 
-    <script src="script.js"></script>
-</body1>
+</body>
 </html>

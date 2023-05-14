@@ -4,9 +4,7 @@ include 'config.php';
 if(isset($_POST['accept'])){
     $submit_id = isset($_POST['submit-id']) ? $_POST['submit-id'] : null;
     $accept = "accepted";
-    date_default_timezone_set("Asia/Manila");
-    $date=date('y-m-d');
-    $queryAcceptBtn = "UPDATE ltr_permit SET status = '$accept', dateAccepted = '$date' WHERE id = $submit_id";
+    $queryAcceptBtn = "UPDATE ltr_permit SET status = '$accept' WHERE id = $submit_id";
     $sqlAcceptBtn = mysqli_query($con, $queryAcceptBtn);
     if($sqlAcceptBtn){
         header('location:admin-application-submit.php');
@@ -42,19 +40,8 @@ if(isset($_POST['accept'])){
             <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>          
 
         <hr>        
-            <a href="admin-profile.php">PROFILE</a>
-            <div id="dropdown">
-                <a id="application">APPLICATION</a>
-                <div id="dropdown-content">
-                    <a href="admin-application-submit.php">SUBMITTED</a>
-                    <a href="admin-application-return.php">RETURNED</a>
-                    <a href="admin-application-accept.php">ACCEPTED</a>
-                    <a href="admin-application-release.php">RELEASED</a>
-                    <a href="admin-application-expire.php">EXPIRED</a>
-                    <a href="admin-application-use.php">USED</a>
-                </div>
-            </div>            
-            <a href="admin-users.php">OTHER USERS</a>                   
+            <a id="application">WFP</a>        
+            <a href="wildlife-collectors.php">WCP</a>                   
     </div>
 
     <div class="content"> 
@@ -65,7 +52,7 @@ if(isset($_POST['accept'])){
     <div class="search">
         <table class="search-table">
             <tr>                
-                <th id="title"><h2>SUBMITTED</h2></th>                                                                            
+                <th id="title"><h2>WILDLIFE FARM PERMITS</h2></th>                                                                            
                 <th>
                     <form > 
                         <input type="search" id="search-bar" name="q" placeholder="Search...">
@@ -79,7 +66,7 @@ if(isset($_POST['accept'])){
             <table>
                 <tr>
                     <th>
-                    <button id="ltr-permit" type="submit">ADD LOCAL TRANSPORT PERMIT</button>
+                    <button id="ltr-permit" type="submit">ADD WFP</button>
                     </th>
                     <th>                        
                     </th>                    
@@ -93,12 +80,13 @@ if(isset($_POST['accept'])){
             <table >
                     <thead>
                         <tr>
-                            <th>Application<br>Number</th>
-                            <th>Date and Time<br>Encoded</th>
-                            <th>Received by<br>(Name of<br>PENRO personnel)</th>
-                            <th>Date & Time Updated</th>                                     
-                            <th>Date & Tine Submitted</th>                                            
-                            <th>Uploaded<br>Requirement</th> 
+                            <th>Permit No.</th>
+                            <th>Business<br>Name</th>
+                            <th>Owner<br>Name</th>
+                            <th>Address</th>                                     
+                            <th>Date Issues</th>                                                                   
+                            <th>Expiration<br>Date</th> 
+                            <th>Certificate</th>
                             <th>Action</th>                                          
 
                         </tr>                                               
@@ -106,26 +94,25 @@ if(isset($_POST['accept'])){
                     <tbody>
                         <?php
                         include 'config.php';
-                        $querySubmit="SELECT * FROM `ltr_permit` where status='submitted'";
+                        $querySubmit="SELECT * FROM `wfp_permit`";
                         $sqlSubmit=mysqli_query($con,$querySubmit);                        
                         while($row = mysqli_fetch_array($sqlSubmit)){
                             echo'
                              <tr>
-                                <td >'. $row['id'] .'</td>
-                                <td >'. $row['date'].'</td>
-                                <td ></td>
-                                <td >'. $row['date'].'</td>  
-                                <td >'. $row['date'].'</td> 
+                                <td></td>              
+                                <td></td>              
+                                <td></td>              
+                                <td></td>              
+                                <td></td>              
+                                <td></td>              
+                                <td></td> 
                                 <form method="POST">             
-                                <td ><button class="btn">VIEW</button></td>              
-                                <td >  
-                                <form method="POST">
-                                    <input type="hidden" name="submit-id" value="'.  $row['id'] .'">
+                                <td>                                 
+                                    <input type="hidden" name="accept-id" value="'.  $row['id'] .'">
+                                    <button class="btn">VIEW</button>
                                     <button class="btn blueBtn">EDIT</button>
-                                    <button class="btn greenBtn" name="accept">ACCEPT</button>
-                                    <button class="btn yellowBtn">RETURN</button>
-                                    <button class="btn redBtn">DELETE</button>                               
-
+                                    <button class="btn greenBtn" name="activate">ACTIVATE</button>
+                                    <button class="btn redBtn">DEACTIVATE</button>                                   
                                 </td> 
                                 </form>            
                             </tr>';    

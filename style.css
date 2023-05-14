@@ -214,6 +214,18 @@ table td{
     
     
 }
+
+#view-doc{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 1em;
+  background-color:#353535;
+  border-radius: 1em;
+}
+
+
+
 #view-doc:hover{
     background-color: #027A00;
 }
@@ -298,11 +310,12 @@ table td{
     background-color:#284B63 ;
     color: aliceblue;
     cursor: pointer;
+    margin-left: 10px;
 }
 .Add:hover {
   background: #353535;
 }
-::placeholder { 
+/* ::placeholder { 
     color: rgb(180, 174, 174);
   }
 input[type=searchs] {
@@ -320,9 +333,9 @@ input[type=searchs] {
     background-repeat: no-repeat;
     padding: 8.5px 30px 8.5px 45px;
    
-  }
+  } */
   
-  .Sbar {
+  /* .Sbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -340,9 +353,9 @@ input[type=searchs] {
     display: flex;
     position: relative;
     padding-top: 50px;
-  }
+  } */
   
-  .line {
+  /* .line {
     display: block;
     background-color: black;
     margin: 0 auto;
@@ -350,10 +363,10 @@ input[type=searchs] {
     position: absolute;
     left: 36%;
     top: 88px;
-  }
+  } */
 /* The Modal (background) */
 
-.modal {
+/* .modal {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -372,8 +385,8 @@ input[type=searchs] {
 	left: 50%;
 	transform: translate(-50%, -50%);
     
-  }
-  .container1 {
+  } */
+  /* .container1 {
     margin: 100px;
     max-width: 400px;
     width: 100%;
@@ -396,8 +409,8 @@ input[type=searchs] {
   }
   .img-area .icon {
     font-size: 100px;
-  }
-  .img-area h3 {
+  } */
+  /* .img-area h3 {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 6px;
@@ -417,8 +430,8 @@ input[type=searchs] {
     object-fit: cover;
     object-position: center;
     z-index: 100;
-  }
-  .img-area::before {
+  } */
+  /* .img-area::before {
     content: attr(data-img);
     position: absolute;
     top: 0;
@@ -436,8 +449,8 @@ input[type=searchs] {
     opacity: 0;
     transition: all .3s ease;
     z-index: 200;
-  }
-  .img-area.active:hover::before {
+  } */
+  /* .img-area.active:hover::before {
     opacity: 1;
   }
   .up{
@@ -457,8 +470,8 @@ input[type=searchs] {
     border: none;
     cursor: pointer;
     transition: all .3s ease;
-  }
-  .select-image:hover {
+  } */
+  /* .select-image:hover {
     background: gray;
   }
 .form-control {
@@ -475,8 +488,8 @@ input[type=searchs] {
       border: 1px solid #d1d3e2;
       border-radius: 0.35rem;
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-  .modal-footer {
+} */
+  /* .modal-footer {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -496,21 +509,19 @@ input[type=searchs] {
   .btn-secondary, .btn:hover {
     background: gray
   }
-  .btn{
-    background-color: #3C6E71;
-      border-color: none;
-  }
-  .btn-secondary {
+
+  /* .btn-secondary {
       background-color: #E63946;
       border-color: none;
     
   }
-  .close {
+  /* .close {
     display: none;
-  }
+   } */
+
   
   /* The Close Button */
-  .close1 {
+  /* .close1 {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -527,8 +538,8 @@ input[type=searchs] {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  .card {
+  } */
+  /* .card {
     width: 30%;
     height: 400px;
     margin-bottom: 20px;
@@ -545,9 +556,9 @@ input[type=searchs] {
   
   .gallery:first-child {
     justify-content: flex-start;
-  }
+  } */
   
-  .card img {
+  /* .card img {
     width: 100%;
     height: auto;
   }
@@ -563,8 +574,8 @@ input[type=searchs] {
   .card .btn {
     display: inline-block;
     margin-top: 10px;
-  }
-  .v{
+  } */
+  /* .v{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -582,8 +593,8 @@ input[type=searchs] {
     border: none;
     cursor: pointer;
     transition: all .3s ease;
-  }
-  .vi:hover {
+  } */
+  /* .vi:hover {
     background: gray;
   }
   .modal-footer1 {
@@ -593,9 +604,9 @@ input[type=searchs] {
     align-items: center;
     justify-content: space-around;
 
-}
+} */
 
-.del, .edit {
+/* .del, .edit {
   font-size: 20px;
   margin: 0.25rem;
   color: #fff;
@@ -611,26 +622,245 @@ input[type=searchs] {
 .edit{
   background-color: #3C6E71;
     border-color: none;
-}
-.del {
+} */
+/* .del {
     background-color: #E63946;
     border-color: none;
   
 }
 .de{
   text-align: justify;
-  /* text-justify: inter-word; */
+  
 }
 .ti{
   font-weight: bold;
+} */
+
+.editBtn{
+  background-color:#284B63;
+  border-radius:1em;
+  border: none;
+  padding:1em;
+  margin: 0em;
+  color:white;
 }
+
+.editBtn:hover{
+ background-color: #353535;
+ border-radius: 1em;
+}
+
 /* generate permit */
 
-.document{
-  background-color: rgb(145, 77, 134);
-  width: 800px;
-  height: 1000px;
+
+.generate-doc, .inspection-doc{
+  background-color:#aaaaaa;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2em 2em 0 0;
+  position:relative;
 }
-#logo-doc{
-  padding:1em;
+
+.ltr-content, .inspection-content, .div-content{
+ background-color: #ffffff;
+ padding: 2em; 
+ position:relative;
+}
+
+
+.line{
+  top: 20em;
+  height: 5px;
+  width: 100%;
+}
+.gov-name{
+  display: inline-block;  
+  top: 2em !important;
+  position: absolute;
+ 
+  
+}
+
+.doc-table {
+  margin-top: 0em;
+}
+.doc-table tr th{
+  padding-top: 0em;
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  border: none;
+  font-weight: normal;
+}
+.doc-table-v2{
+  width:100%;
+}
+
+.doc-table-v2 tr th{
+  padding-top: 0em;
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  border: 1px solid black;
+  font-weight: normal;
+  font-size: 8px;
+  padding:.5em
+}
+
+.back{
+  padding: .5em 1em; 
+  margin:1em;
+  background-color:#284B63;
+  color:white;
+  font-weight:bold;
+  border:none;
+  border-radius:1em;
+  position: absolute;
+  z-index:5;
+  text-decoration: none;
+  
+}
+
+.back:hover{
+  background-color: #353535;
+}
+
+/* add ltr permit */
+.blueBtn{
+  background-color:#284B63;
+}
+
+.redBtn{
+  background-color:#E63946;
+}
+
+.yellowBtn{
+  background-color:#9D8401
+}
+
+.greenBtn{
+  background-color:#027A00;
+}
+
+.btn{
+  padding:.5em 1em;
+  margin: .5em;
+  border-radius:1em;
+  border:none;
+  color:white;
+  font-weight:bold;  
+  margin-bottom:2em;
+  background-color: #3C6E71;
+  border-color: none;
+}
+.btn a{
+ text-decoration: none;
+ font-weight: bold;
+ color: white;
+}
+.btn:hover{
+  background-color:#353535;
+}
+
+.permit-details{
+  width:90%;
+  height:65em;
+  background:#D9D9D9;
+  padding:2em;
+  border-radius: 2em;
+}
+.personal-div tr td{
+  background-color: #35353500;
+  border:none;  
+  width:5%;  
+  padding:.5em;
+  font-weight: normal;
+}
+.personal-div tr td input{
+  padding:.5em;
+  border-radius:.5em;
+  border:none;
+  margin:.5em;
+}
+
+.butterfly-details-div{
+  overflow-y:scroll;
+  height:30em;
+}
+
+.butterfly-details-div table thead{
+  position: sticky;
+    inset-block-start: 0;
+}
+
+.butterfly-details-table tr td{
+  width:10em;
+  padding: 1em;
+  
+  
+}
+
+.butterfly-details-table tr td input, .add-butterfly tr td input{
+  padding: .5em;
+  border-radius: .5em;
+  border: none;
+  margin-top:1em;
+}
+
+
+.add-butterfly tr td{
+  width:20em;
+  border:none;  
+ 
+}
+
+.add-butterfly{
+  width:60%;
+  height:40em;
+  background:#D9D9D9;
+  padding:5em;
+  border-radius: 2em;
+  margin:auto;
+}
+
+/* modal */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  /* display:flex;
+  align-items: center; */
+  position: absolute;;
+  background-color: #fefefe;
+  margin: auto; /* 15% from the top and centered */
+  padding: 20px;
+  top:20;
+  border: 1px solid #888;
+  width: 80%;
+  height:50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

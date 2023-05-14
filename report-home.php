@@ -20,7 +20,7 @@ $database = "data";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
    
 </head>
@@ -266,7 +266,7 @@ $database = "data";
                     </th>
                     <th></th>
                     <th>
-                        <button id="view-doc" type="submit">View Document</button>
+                    <a id="view-doc" href="generate-home-transpo-butterfly.php" >View Document</a>
                     </th>
                 </tr>
             </table>
@@ -559,7 +559,7 @@ $database = "data";
                     </th>
                     <th></th>
                     <th>
-                        <button id="view-doc" type="submit">View Document</button>
+                        <a id="view-doc" href="generate-home-ltr-permit.php">View Document</a>
                     </th>
                 </tr>
             </table>
