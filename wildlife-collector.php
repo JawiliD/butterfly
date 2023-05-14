@@ -37,11 +37,11 @@ if(isset($_POST['accept'])){
     </div>
     <div class="top-header">        
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
-            <h1>WILDLIFE BUTTERFLY</h1>        
+            <h1>WILDLIFE BUTTERFLY</h1>         
 
         <hr>        
-            <a id="application">WFP</a>        
-            <a href="wildlife-collector.php">WCP</a>                   
+            <a href="wildlife-farm.php">WFP</a>        
+            <a id="application">WCP</a>                   
     </div>
 
     <div class="content"> 
@@ -52,7 +52,7 @@ if(isset($_POST['accept'])){
     <div class="search">
         <table class="search-table">
             <tr>                
-                <th id="title"><h2>WILDLIFE FARM PERMITS</h2></th>                                                                            
+                <th id="title"><h2>WILDLIFE COLLECTOR'S PERMITS</h2></th>                                                                            
                 <th>
                     <form > 
                         <input type="search" id="search-bar" name="q" placeholder="Search...">
@@ -66,7 +66,7 @@ if(isset($_POST['accept'])){
             <table style="float:left;">
                 <tr>
                     <th>
-                    <button id="ltr-permit" type="submit" style="float:left;"><a class="link" href="add-wfp.php">ADD WILDLIFE FARM PERMIT</a></button>
+                    <button id="ltr-permit" type="submit" style="float:left;"><a class="link" href="add-wcp.php">ADD WILDLIFE COLLECTOR'S PERMIT</a></button>
                     </th>
                     <th>                        
                     </th>                    
@@ -103,14 +103,14 @@ if(isset($_POST['accept'])){
                                 <form method="POST">             
                                 <td>                                 
                                     <input type="hidden" name="accept-id" value="'.  $row['id'] .'">
-                                    <button class="btn bgreenBtn"><a href="view-wfp.php">VIEW</a></button>
+                                    <button class="btn bgreenBtn"><a href="view-wcp.php">VIEW</a></button>
                                     <button class="btn blueBtn">EDIT</button>
                                     <button class="btn greenBtn" name="activate">ACTIVATE</button>
                                     <button class="btn redBtn">DEACTIVATE</button>                                   
                                 </td> 
                                 </form>  
                         </tr>
-                        
+
                         <?php
                         include 'config.php';
                         $querySubmit="SELECT * FROM `wfp_permit`";
@@ -128,7 +128,7 @@ if(isset($_POST['accept'])){
                                 <form method="POST">             
                                 <td>                                 
                                     <input type="hidden" name="accept-id" value="'.  $row['id'] .'">
-                                    <button class="btn">VIEW</button>
+                                    <button id="openModalBtn" class="btn">VIEW</button>
                                     <button class="btn blueBtn">EDIT</button>
                                     <button class="btn greenBtn" name="activate">ACTIVATE</button>
                                     <button class="btn redBtn">DEACTIVATE</button>                                   
@@ -136,18 +136,13 @@ if(isset($_POST['accept'])){
                                 </form>            
                             </tr>';    
                         }
-
-                        
                        
                         ?>
-
-                        
                         </tbody>
                     </table>
                 </div>
-                
             </div>           
-           
+    
         </div>
     
 
@@ -156,5 +151,71 @@ if(isset($_POST['accept'])){
     </div>
 
 
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="container">
+        <table>
+            <tr style="margin:0em;"><td style="width:80%"><h3 >Wildlife Collector's Permit Details</td><td></h3><img style="display:flex;justify-content:right;" src="image/logo2.png" width="75"></td></tr>
+                    </table>
+            <table class="details" style="margin-top:0em;">
+            <tr>
+                        <td>
+                            <label>Business Name: </label><br>
+                            <p></p>
+                        </td> 
+                        <td>
+                            <label>Owner's Name: </label><br>
+                            <p></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Address</label><br>
+                            <p></p>
+                        </td>                        
+                        <td>
+                            <label>Date Issue</label><br>
+                            <p></p>
+                        </td>                         
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Expiration</label><br>
+                            <p></p>
+                        </td>
+                        <td>
+                            <label>Quantity</label><br>
+                            <p></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Description</label><br>
+                            <p></p>
+                        </td>
+                        <td>                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>                                                    
+                        </td>
+                        <td>
+                        <div>                            
+                            <button class="btn redBtn" id="close" style="float:right;">CLOSE</button> 
+                        </div>    
+                        </td>
+                    </tr>    
+                    
+                </table>    
+        </div>
+  </div>
+</div>
+
+    
+<script src="js/script.js"></script>
 </body>
 </html>

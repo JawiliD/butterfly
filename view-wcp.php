@@ -37,82 +37,72 @@ if(isset($_POST['save'])){
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
             <li class="admin"><a href="admin-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
-            <li class="butterfly"><a href=""><h4>Butterfly</h4></a></li>
-            <li><a href=""><h4>Wildlife Permit</h4></a></li>            
+            <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
+            <li class="butterfly"><h4>Wildlife Permit</h4></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
-            <h1>WILDLIFE BUTTERFLY</h1>  
+            <h1>WILDLIFE BUTTERFLY</h1> 
          <hr><br>       
         
     </div> 
     <div class="content">   
-        <div class="add-butterfly">
-            <h2>Butterfly Details</h2>
-            <form method="POST">
-                <table>
-                    <tr>
+    <div class="container">
+        <table>
+            <tr style="margin:0em;"><td style="width:80%"><h3 >Wildlife Collector's Permit Details</td><td></h3><img style="display:flex;justify-content:right;" src="image/logo2.png" width="75"></td></tr>
+                    </table>
+            <table class="details" style="margin-top:0em;">
+            <tr>
                         <td>
-                            <label>Species Type</label><br>
-                            <input name="speciestype" type="text" placeholder="Species Type" required="required">
+                            <label>Business Name: </label><br>
+                            <p></p>
                         </td> 
                         <td>
-                            <label>Class Name</label><br>
-                            <input name="classname" type="text" placeholder="Class Name" required="required">
+                            <label>Owner's Name: </label><br>
+                            <p></p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Family Name</label><br>
-                            <input name="familyname" type="text" placeholder="Family Name" required="required">
+                            <label>Address:</label><br>
+                            <p></p>
                         </td>                        
                         <td>
-                            <label>Common Name</label><br>
-                            <input name="commonname" type="text" placeholder="Common Name" required="required">
+                            <label>Date Issue:</label><br>
+                            <p></p>
                         </td>                         
                     </tr>
                     <tr>
                         <td>
-                            <label>Scientific Name</label><br>
-                            <input name="scientificname" type="text" placeholder="Scientific Name" required="required">
+                            <label>Expiration:</label><br>
+                            <p></p>
                         </td>
                         <td>
-                            <label>Type of Specimen</label><br>
-                            <input name="typeofspecimen" type="text" placeholder="Type of Specimen" required="required">
+                            <label>Quantity:</label><br>
+                            <p></p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Quantity</label><br>
-                            <input name="quantity" type="number" placeholder="Quantity" required="required">
+                            <label>Description:</label><br>
+                            <p></p>
+                        </td>
+                        <td>                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>                                                    
                         </td>
                         <td>
-                            <label>Description</label><br>
-                            <input name="description" type="text" placeholder="Description" required="required">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>                           
-                        </td>
-                        <td>
-                        <div>
-                            <button class="btn blueBtn" name="save" type="submit">SAVE</button>
-                            <button class="btn redBtn" ><a style="text-decoration:none;color:white;" href="butterfly.php">CANCEL</a></button> 
+                        <div>                            
+                            <button class="btn redBtn" id="close" style="float:right;"><a href="wildlife-collector.php">BACK</button> 
                         </div>    
                         </td>
-                    </tr>
-                </table>                            
-            </form>                       
+                    </tr>    
+                    
+                </table>    
         </div>
     </div>
         
@@ -121,3 +111,5 @@ if(isset($_POST['save'])){
 
 </body>
 </html>
+
+

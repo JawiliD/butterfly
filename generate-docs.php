@@ -23,13 +23,13 @@ $row = mysqli_fetch_assoc($sqlSelect);
         <ul>
             <li class="admin"><a href="admin-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
-            <li><a href=""><h4>Wildlife Permit</h4></a></l>            
-            <li><a href=""><h4>Report</h4></a></li>
+            <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></l>            
+            <li><a href="report-home.php"><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        
-            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
-            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>          
+            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
+            <h1>WILDLIFE BUTTERFLY</h1>         
 
         <hr>        
                     

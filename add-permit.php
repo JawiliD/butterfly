@@ -78,8 +78,8 @@ if(isset($_POST['add-butterfly'])){
         </ul>
     </div>
     <div class="top-header">        
-            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
-            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>  
+            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
+            <h1>WILDLIFE BUTTERFLY</h1>  
          <hr><br>       
         
     </div> 

@@ -17,25 +17,32 @@
         <ul>
             <li class="admin"><a href="admin-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
             <li class="butterfly"><a href=""><h4>Butterfly</h4></a></li>
-            <li><a href=""><h4>Wildlife Permit</h4></a></li>            
+            <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
         </ul>
     </div>
     <div class="top-header">        
-            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
-            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>  
+            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
+            <h1>WILDLIFE BUTTERFLY</h1> 
          <hr><br>
 
     
-         <div class="Sbar"> 
-             <button type="button" id="myBtn" class="Add" ><a style="color:white;padding:0em;" href="add-butterfly.php">ADD BUTTERFLY SPECIES</a></button>
-             <form > 
-                  <input type="search" id="search-bar" name="q" placeholder="Search...">
-                  <button id="search-button">SEARCH</button>
-              </form>
-            </div>
-        <div class="list"><h1 >LIST OF BUTTERFLIES</h1></div> 
-        
+         <div class="search">
+        <table class="search-table">
+            <tr>                
+                <th id="title"><h2>LIST OF BUTTERFLY</h2></th>                                                                            
+                <th>
+                    <form > 
+                        <input type="search" id="search-bar" name="q" placeholder="Search...">
+                        <button id="search-button">SEARCH</button>
+                    </form>
+                </th>
+            </tr>
+        </table>       
+    </div>
+    <button class="btn blueBtn"><a style="padding:0em;" href="add-butterfly.php">ADD BUTTERFLY DETAILS</a></button>
+    
+                    
   <div class="table-div">
       <div class="report-table">
         <table>
@@ -69,8 +76,8 @@
                           <td >' . $row['quantity'].'</td>             
                           <td >' . $row['description'].'</td>             
                           <td>        
-                              <button class="btn blueBtn"><a href="update-butterfly.php?update-butterfly-id='.$row['id'].'">Edit</a></button>                
-                              <button class="btn redBtn"><a href="delete.php?delete-butterfly-id='. $row['id'].'">Delete</a></button>
+                              <button class="btn blueBtn"><a style="padding:0em;" href="update-butterfly.php?update-butterfly-id='.$row['id'].'">Edit</a></button>                
+                              <button class="btn redBtn"><a style="padding:0em;" href="delete.php?delete-butterfly-id='. $row['id'].'">Delete</a></button>
                           </td>            
                       </tr>';
                  

@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Button to open the modal -->
-<button style="float:right;" id="openModalBtn">Open Modal</button>
+  <!-- Button to open the modal -->
+<button id="openModalBtn">Open Modal</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
+    <div class="container">
     <table>
                     <tr>
                         <td>
@@ -66,10 +66,11 @@
                         </div>    
                         </td>
                     </tr>
-                </table>
+                </table>    
+        </div>
   </div>
-
 </div>
+
 <script src="js/script.js"></script>
 </body>
 </html>

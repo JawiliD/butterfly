@@ -43,14 +43,14 @@ if(isset($_POST['save'])){
         </ul>
     </div>
     <div class="top-header">        
-            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
-            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>  
+            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
+            <h1>WILDLIFE BUTTERFLY</h1>  
          <hr><br>       
         
     </div> 
     <div class="content">   
-        <div class="add-butterfly">
-            <h2>Wildlife Farm Details</h2>
+        <div class="add-butterfly" style="height:30em;">
+            <h2>Wildlife Collector's Details</h2>
             <form method="POST">
                 <table>
                     <tr>
@@ -97,7 +97,7 @@ if(isset($_POST['save'])){
                         <td>
                         <div>
                             <button class="btn blueBtn" name="save" type="submit">SAVE</button>
-                            <button class="btn redBtn" ><a style="text-decoration:none;color:white;" href="butterfly.php">CANCEL</a></button> 
+                            <button class="btn redBtn" ><a class="link" href="wildlife-collector.php">CANCEL</a></button> 
                         </div>    
                         </td>
                     </tr>
