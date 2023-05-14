@@ -1,3 +1,21 @@
+<?php
+include 'config.php';
+
+if(isset($_POST['release'])){
+    $accept_id = isset($_POST['accept-id']) ? $_POST['accept-id'] : null;
+    $status = "release";
+    date_default_timezone_set("Asia/Manila");
+    $date=date('y-m-d');    
+    $queryReleaseBtn = "UPDATE ltr_permit SET status = '$status', dateReleased = '$date' WHERE id = $accept_id";
+    $sqlReleaseBtn = mysqli_query($con, $queryReleaseBtn);
+    if($sqlReleaseBtn){
+        header('location:admin-application-accept.php');
+        exit;
+    } else {
+        die(mysqli_error($con));
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +38,8 @@
         </ul>
     </div>
     <div class="top-header">        
-            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR WILDLIFE</h1>
-            <h1>●～●～●～●BUTTERFLY●～●～●～●</h1>   
+            <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR </h1>
+            <h1>WILDLIFE BUTTERFLY</h1>          
 
         <hr>        
             <a href="admin-profile.php">PROFILE</a>
@@ -56,7 +74,7 @@
                 </th>
             </tr>
         </table>       
-    </div>        
+    </div>
         <div class="table-div">
             <div class="report-table">
             <table >
@@ -73,115 +91,55 @@
                         </tr>                                               
                     </thead>
                     <tbody>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ><a href="generate-docs.php"><button>Generate</button></</td>                                                   
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>           
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                            <td ></td>             
-                        </tr>
+                        <?php
+                            
+                            $queryAccept="SELECT * FROM `ltr_permit` where status='accepted'";
+                            $sqlAccept=mysqli_query($con,$queryAccept);
+                            while($row=mysqli_fetch_array($sqlAccept)){
+                                echo '
+                                <tr>
+                                    <td >'. $row['id'] .'</td>
+                                    <td >'. $row['date'].'</td>
+                                    <td ></td>
+                                    <td >'. $row['date'].'</td>  
+                                    <td >'. $row['date'].'</td> 
+                                    <form method="POST">             
+                                    <td ><button class="btn">VIEW</button></td>
+                                    <form method="POST">              
+                                    <td >
+                                        <button class="btn yellowBtn"><a href="generate-docs.php?generate-id='. $row['id'].'">GENERATE</a></button>  
+                                        <button class="btn greenBtn" name="release">RELEASE</button> 
+                                        <input type="hidden" name="accept-id" value="'.  $row['id'] .'">                                     
+                                    </td>   
+                                    </form>          
+                                </tr>';
+                            }
+                        ?>
+                        
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    
-
-           
-
+        <!-- Button to open the modal -->
+<button id="openModalBtn">Open Modal</button>
     </div>
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Modal content goes here.</p>
+  </div>
+
+</div>
+
+<script src="js/script.js">
+    </script>
     
     
 </body>
