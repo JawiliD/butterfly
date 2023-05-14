@@ -24,7 +24,7 @@
         <hr>        
             <a href="client-profile.php">PROFILE</a>           
                 <a id="application">APPLICATION</a>         
-            <a href="client-report.php">REPORTS</a>                   
+            <a href="">REPORTS</a>                   
     </div>
 
     <div class="content"> 

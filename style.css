@@ -542,3 +542,14 @@ table td{
   width:50%;
 
 }
+
+/* profile */
+
+.info{
+  width: 100%;
+}
+
+.info table td{
+  background-color: #00000000;
+  border: 0em;
+}

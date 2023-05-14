@@ -104,7 +104,7 @@ if(isset($_POST['release'])){
                                     <td >'. $row['date'].'</td>  
                                     <td >'. $row['date'].'</td> 
                                     <form method="POST">             
-                                    <td ><button class="btn">VIEW</button></td>
+                                    <td ><button class="btn bgreenBtn">VIEW</button></td>
                                     <form method="POST">              
                                     <td >
                                         <button class="btn yellowBtn"><a href="generate-docs.php?generate-id='. $row['id'].'">GENERATE</a></button>  
