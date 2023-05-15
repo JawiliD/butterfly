@@ -105,7 +105,7 @@
                                 <td>                                 
                                     <input type="hidden" name="accept-id" value="'.  $row['id'] .'">
                                     <button class="btn bgreenBtn"><a href="view-wcp.php">VIEW</a></button>
-                                    <button class="btn blueBtn">EDIT</button>
+                                    <button class="btn blueBtn"><a href="update-wcp.php">EDIT</a></button>
                                     <button class="btn greenBtn" name="activate">ACTIVATE</button>
                                     <button class="btn redBtn">DEACTIVATE</button>                                   
                                 </td> 
@@ -170,8 +170,8 @@
                                 <form method="POST">             
                                 <td>                                 
                                     <input type="hidden" name="accept-id" value="'.  $row['id'] .'">
-                                    <button class="btn bgreenBtn"><a href="view-wcp.php">VIEW</a></button>
-                                    <button class="btn blueBtn">EDIT</button>
+                                    <button class="btn bgreenBtn"><a href="view-wfp.php">VIEW</a></button>
+                                    <button class="btn blueBtn"><a href="update-wfp.php">EDIT</a></button>
                                     <button class="btn greenBtn" name="activate">ACTIVATE</button>
                                     <button class="btn redBtn">DEACTIVATE</button>                                   
                                 </td> 
