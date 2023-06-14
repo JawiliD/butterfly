@@ -20,6 +20,7 @@
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></l>            
             <li id="report-menu"><h4>Report</h4></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        

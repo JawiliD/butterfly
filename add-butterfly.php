@@ -1,5 +1,6 @@
 <?php 
 include 'config.php';
+
 if(isset($_POST['save'])){  
     $species=$_POST['speciestype'];   
     $classN=$_POST['classname'];   
@@ -40,6 +41,7 @@ if(isset($_POST['save'])){
             <li class="butterfly"><a href=""><h4>Butterfly</h4></a></li>
             <li><a href=""><h4>Wildlife Permit</h4></a></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        

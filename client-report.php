@@ -10,21 +10,23 @@
    
 </head>
 <body>
-    <div class="right-header">
+<div class="right-header">
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
-            <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Name of Client</h4></li>
-            
+            <li id="admin" class="admin" ><h4></i>Home</h4></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
             <h1>WILDLIFE BUTTERFLY</h1>          
 
-        <hr>        
-            <a href="client-profile.php">PROFILE</a>           
-                <a id="application">APPLICATION</a>         
-            <a href="">REPORTS</a>                   
+        <hr>
+        <a href="client-home.php">HOME</a> 
+        <a href="client-profile.php">PROFILE</a>
+        <a href="client-application-status.php">APPLICATION</a>              
+        <a id="profile" href="client-report.php">REPORTS</a>              
+    </div>                
     </div>
 
     <div class="content"> 
@@ -44,21 +46,7 @@
                 </th>
             </tr>
         </table>       
-    </div>
-        <form action="add-permit.php" method="POST">
-            <table>
-                <tr>
-                    <th>
-                    <button id="ltr-permit" type="submit">ADD LOCAL TRANSPORT PERMIT</button>
-                    </th>
-                    <th>                        
-                    </th>                    
-                    <th>                        
-                    </th>
-                </tr>
-            </table>
-        </form><br><br>
-        <i class="fa-sharp fa-regular fa-filter-list"></i>
+    </div><br><br>
         <form method="POST">
         <label for="status">Filter by:</label>
             <select name="status" id="status">

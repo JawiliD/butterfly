@@ -1,19 +1,20 @@
 <?php 
 include 'config.php';
-if(isset($_POST['save'])){  
-    $species=$_POST['speciestype'];   
-    $classN=$_POST['classname'];   
-    $familyN=$_POST['familyname'];   
-    $commonN=$_POST['commonname'];   
-    $scientificN=$_POST['scientificname'];   
-    $typeS=$_POST['typeofspecimen'];   
-    $quantity=$_POST['quantity'];   
-    $description=$_POST['description'];   
 
-    $sql="insert into `butterfly` (speciesType,className,familyName,commonName,scientificName,typeOfSpecimen,quantity,description) values('$species','$classN','$familyN','$commonN','$scientificN','$typeS','$quantity','$description')";
+if(isset($_POST['save'])){ 
+    $wfpNo = $_POST['wcp']; 
+    $business=$_POST['businessname'];   
+    $owner=$_POST['ownerName'];   
+    $address=$_POST['address'];   
+    $dateIssue=$_POST['dateissue'];   
+    $expiration=$_POST['expiration'];   
+    $certificate=$_POST['certificate'];    
+     
+
+    $sql="insert into `wcp_permit` (wcpNo,businessName,ownerName,address,dateIssue,expirationDate,certificate) values('$wfpNo','$business','$owner','$address','$dateIssue','$expiration','$certificate')";
     $result=mysqli_query($con,$sql);
     if($result){
-        header('location:butterfly.php');
+        header('location: wildlife-collector.php');
     }else{
         die(mysqli_error($con));
     }
@@ -40,55 +41,57 @@ if(isset($_POST['save'])){
             <li><a href=""><h4>Butterfly</h4></a></li>
             <li class="butterfly"><h4>Wildlife Permit</h4></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
-            <h1>WILDLIFE BUTTERFLY</h1>  
+            <h1>WILDLIFE BUTTERFLY</h1> 
          <hr><br>       
         
     </div> 
     <div class="content">   
         <div class="add-butterfly" style="height:30em;">
-            <h2>Wildlife Collector's Details</h2>
+            <h2>Wildlife Collector Details</h2>
             <form method="POST">
-                <table>
+            <table>
                     <tr>
                         <td>
                             <label>Business Name</label><br>
-                            <input name="businessname" type="text" placeholder="Species Type" required="required">
+                            <input name="businessname" type="text" placeholder="Business Name" required="required">
                         </td> 
                         <td>
                             <label>Owner's Name</label><br>
-                            <input name="ownersname" type="text" placeholder="Class Name" required="required">
+                            <input name="ownerName" type="text" placeholder="Owner's Name" required="required">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Address</label><br>
-                            <input name="address" type="text" placeholder="Family Name" required="required">
+                            <input name="address" type="text" placeholder="Address" required="required">
                         </td>                        
                         <td>
                             <label>Date Issue</label><br>
-                            <input name="dateissue" type="text" placeholder="Common Name" required="required">
+                            <input name="dateissue" type="date" placeholder="date Issue" required="required">
                         </td>                         
                     </tr>
                     <tr>
                         <td>
                             <label>Expiration</label><br>
-                            <input name="expiration" type="text" placeholder="Scientific Name" required="required">
+                            <input name="expiration" type="date" placeholder="expiration" required="required">
                         </td>
                         <td>
-                            <label>Quantity</label><br>
-                            <input name="quantity" type="text" placeholder="Type of Specimen" required="required">
+                            <label>Certificate</label><br>
+                            <input name="certificate" type="file" >
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Description</label><br>
-                            <input name="description" type="number" placeholder="Quantity" required="required">
+                            <label>WCP Number</label><br>
+                            <input name="wcp" type="text" placeholder="wcp Number" required="required"> 
                         </td>
-                        <td>                            
+                        <td>
+                                
                         </td>
                     </tr>
                     <tr>
@@ -102,7 +105,7 @@ if(isset($_POST['save'])){
                         </td>
                     </tr>
                 </table>                            
-            </form>                       
+            </form>                        
         </div>
     </div>
         

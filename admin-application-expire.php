@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
    
 </head>
@@ -17,6 +17,7 @@
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -72,105 +73,29 @@
                         </tr>                                               
                     </thead>
                     <tbody>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>             
-                                                                              
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                         
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                      
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                        
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                         
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                        
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                        
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                        
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                        
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                       
-                        </tr>
-                        <tr>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>
-                            <td ></td>  
-                            <td ></td>              
-                            <td ></td>              
-                                       
-                        </tr>
+                    <?php 
+                            include 'config.php';                      
+
+                            $date = date('Y');
+                            $queryExpire="SELECT * FROM `ltr_permit` where status='expired'";
+                            $sqlExpired=mysqli_query($con,$queryExpire);
+                            while($row=mysqli_fetch_array($sqlExpired)){
+                                
+                                echo '
+                                <tr>
+                                    <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
+                                    <td >'. $row['dateReleased'].'</td>
+                                    <td ></td>
+                                    <td >'. $row['expirationDate'].'</td> 
+                                    <form method="POST">             
+                                    <td ><button class="btn bgreenBtn"><a href="view-docs.php?generate-id='. $row['id'].'">VIEW REPORTS</a></button></td>
+                                    <form method="POST">              
+                                    <td >                                       
+                                    </td>   
+                                    </form>          
+                                </tr>';
+                            }
+                        ?>
                         </tbody>
                     </table>
                 </div>

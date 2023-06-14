@@ -1,19 +1,3 @@
-<?php
-include 'config.php';
-
-if(isset($_POST['accept'])){
-    $submit_id = isset($_POST['submit-id']) ? $_POST['submit-id'] : null;
-    $accept = "accepted";
-    $queryAcceptBtn = "UPDATE ltr_permit SET status = '$accept' WHERE id = $submit_id";
-    $sqlAcceptBtn = mysqli_query($con, $queryAcceptBtn);
-    if($sqlAcceptBtn){
-        header('location:admin-application-submit.php');
-        exit;
-    } else {
-        die(mysqli_error($con));
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +5,7 @@ if(isset($_POST['accept'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
    
 </head>
@@ -33,6 +17,7 @@ if(isset($_POST['accept'])){
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li id="admin"><h4>Wildlife Permit</h4></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -87,30 +72,13 @@ if(isset($_POST['accept'])){
                             <th>Date Issue</th>                                                                   
                             <th>Expiration<br>Date</th> 
                             <th>Certificate</th>
+                            <th>Status</th>
                             <th>Action</th>                                          
 
                         </tr>                                               
                     </thead>
                     <tbody>
-                    <tr>
-                        <td></td>              
-                                <td></td>              
-                                <td></td>              
-                                <td></td>              
-                                <td></td>              
-                                <td></td>              
-                                <td></td> 
-                                <form method="POST">             
-                                <td>                                 
-                                    <input type="hidden" name="accept-id" value="'.  $row['id'] .'">
-                                    <button class="btn bgreenBtn"><a href="view-wfp.php">VIEW</a></button>
-                                    <button class="btn blueBtn">EDIT</button>
-                                    <button class="btn greenBtn" name="activate">ACTIVATE</button>
-                                    <button class="btn redBtn">DEACTIVATE</button>                                   
-                                </td> 
-                                </form>  
-                        </tr>
-                        
+                    <tr>                        
                         <?php
                         include 'config.php';
                         $querySubmit="SELECT * FROM `wfp_permit`";
@@ -118,20 +86,21 @@ if(isset($_POST['accept'])){
                         while($row = mysqli_fetch_array($sqlSubmit)){
                             echo'
                              <tr>
-                                <td></td>              
-                                <td></td>              
-                                <td></td>              
-                                <td></td>              
-                                <td></td>              
-                                <td></td>              
+                                <td>'. $row['wfpNo'].'</td>              
+                                <td>'. $row['businessName'].'</td>              
+                                <td>'. $row['ownerName'].'</td>              
+                                <td>'. $row['address'].'</td>              
+                                <td>'. $row['dateIssue'].'</td>              
+                                <td>'. $row['expirationDate'].'</td>              
                                 <td></td> 
+                                <td>'. $row['permitStatus'].'</td> 
                                 <form method="POST">             
                                 <td>                                 
                                     <input type="hidden" name="accept-id" value="'.  $row['id'] .'">
-                                    <button class="btn">VIEW</button>
-                                    <button class="btn blueBtn">EDIT</button>
-                                    <button class="btn greenBtn" name="activate">ACTIVATE</button>
-                                    <button class="btn redBtn">DEACTIVATE</button>                                   
+                                    <button class="btn bgreenBtn"><a href="view-wfp.php?view-id='. $row['id'].'" class="link">VIEW</a></button>
+                                    <button class="btn blueBtn"><a href="update-wfp.php?update-id='. $row['id'].'" class="link">EDIT</a></button>
+                                    <button class="btn greenBtn" name="activate"><a href="permit.php?fp-activate-id='. $row['id'].'" class="link">ACTIVATE</a></button>
+                                    <button class="btn redBtn" name= "deactivate"><a href="permit.php?fp-deactivate-id='. $row['id'].'" class="link" >DEACTIVATE</a></button>                                                                    
                                 </td> 
                                 </form>            
                             </tr>';    

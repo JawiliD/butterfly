@@ -1,3 +1,11 @@
+<?php
+ include 'config.php';
+ $id = $_SESSION['id'];
+ $queryUser = "SELECT * from `user_tb` where id = $id";
+ $sqlUser = mysqli_query($con, $queryUser);
+ $row = mysqli_fetch_array($sqlUser);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +20,9 @@
 <body>
     <div class="right-header">
         <img class="logo " src="image/logo.png" alt="logo">
-        <ul>
-            <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Name of Client</h4></li>
+        <ul>           
+            <li id="admin" class="admin" ><h4></i>Home</h4></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
             
         </ul>
     </div>
@@ -22,6 +31,7 @@
             <h1>WILDLIFE BUTTERFLY</h1>       
 
         <hr>        
+        <a href="client-home.php">Home</a>
         <a id="profile">PROFILE</a>
         <a href="client-application-status.php">APPLICATION</a>              
         <a href="client-report.php">REPORTS</a>       
@@ -29,8 +39,7 @@
 
     <div class="content"> 
         <!-- the green background is just a guide for the size of workarea -->
-        <!-- -----start programming here------ -->    
-        <?php date_default_timezone_set("Asia/Manila"); echo date("l Y/m/d") ?>
+        <!-- -----start programming here------ -->            
         <div></div>
         <div class="info">
             <table>
@@ -40,35 +49,35 @@
                 </tr>
                 <tr>
                     <td>First Name
-                    <p></p></td>
+                    <p><?php echo $row['firstName'] ?></p></td>
                     <td>Business Name
-                    <p></p></td>
+                    <p><?php echo $row['businessName'] ?></p></td>
                     
                 </tr>
                 <tr>
                     <td><h4>Last Name</h4>
-                    <p></p></td>
+                    <p><?php echo $row['surname'] ?></p></td>
                     
                 </tr>
                 <tr>
                     <td><h4>Address</h4>
-                    <p></p></td>
+                    <p><?php echo $row['address'] ?></p></td>
                     
                 </tr>
                 <tr>
                     <td><h4>Contact Number</h4>
-                    <p></p></td>
+                    <p><?php echo $row['contact'] ?></p></td>
                     
                 </tr>
                 <tr>
                     <td><h4>Username</h4>
-                    <p></p></td>
+                    <p><?php echo $row['username'] ?></p></td>
                     
                 </tr>
                 <tr>
                     <td><h4>Email Address</h4>
-                    <p></p></td>
-                    <td><button style="float:right;" class="btn blueBtn"><a href="update-client-profile.php" class="link">EDIT</a></button></td>
+                    <p><?php echo $row['email'] ?></p></td>
+                    <td><button style="float:right;" class="btn blueBtn"><a href="update-client-profile.php?update-id='..'" class="link">EDIT</a></button></td>
                     
                 </tr>
                 
@@ -113,7 +122,7 @@
                         </tr>
 
                         <?php
-                        include 'config.php';
+                       
                         $querySubmit="SELECT * FROM `wfp_permit`";
                         $sqlSubmit=mysqli_query($con,$querySubmit);                        
                         while($row = mysqli_fetch_array($sqlSubmit)){
@@ -179,7 +188,7 @@
                         </tr>
 
                         <?php
-                        include 'config.php';
+                      
                         $querySubmit="SELECT * FROM `wfp_permit`";
                         $sqlSubmit=mysqli_query($con,$querySubmit);                        
                         while($row = mysqli_fetch_array($sqlSubmit)){

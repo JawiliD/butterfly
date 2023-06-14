@@ -1,3 +1,9 @@
+<?php
+include 'config.php';
+require('session.php');
+$id = $_SESSION['id'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
    
 </head>
@@ -17,6 +23,7 @@
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -43,6 +50,9 @@
         <!-- the green background is just a guide for the size of workarea -->
         <!-- -----start programming here------ -->    
         <?php date_default_timezone_set("Asia/Manila"); echo date("l Y/m/d") ?> 
+        <?php echo $_SESSION['fname']; ?>
+     
+        
 
            
 

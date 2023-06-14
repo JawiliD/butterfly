@@ -5,10 +5,24 @@ if(isset($_POST['accept'])){
     $submit_id = isset($_POST['submit-id']) ? $_POST['submit-id'] : null;
     $accept = "accepted";
     date_default_timezone_set("Asia/Manila");
-    $date=date('y-m-d');
-    $queryAcceptBtn = "UPDATE ltr_permit SET status = '$accept', dateAccepted = '$date' WHERE id = $submit_id";
+    $dateTime = date('Y-m-d H:i:s');
+    $queryAcceptBtn = "UPDATE ltr_permit SET status = '$accept', dateAccepted = '$dateTime' WHERE id = $submit_id";
     $sqlAcceptBtn = mysqli_query($con, $queryAcceptBtn);
     if($sqlAcceptBtn){
+        header('location:admin-application-submit.php');
+        exit;
+    } else {
+        die(mysqli_error($con));
+    }
+}
+
+if(isset($_POST['return'])){
+    $submit_id = isset($_POST['submit-id']) ? $_POST['submit-id'] : null;
+    date_default_timezone_set("Asia/Manila");
+    $dateTime = date('Y-m-d H:i:s');
+    $queryReturnBtn = "UPDATE ltr_permit SET status = 'returned', dateAccepted = '$dateTime' WHERE id = $submit_id";
+    $sqlReturnBtn = mysqli_query($con, $queryReturnBtn);
+    if($sqlReturnBtn){
         header('location:admin-application-submit.php');
         exit;
     } else {
@@ -23,7 +37,7 @@ if(isset($_POST['accept'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
    
 </head>
@@ -35,6 +49,7 @@ if(isset($_POST['accept'])){
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -79,7 +94,7 @@ if(isset($_POST['accept'])){
             <table style="float:left;">
                 <tr>
                     <th>
-                    <button id="ltr-permit" type="submit"><a class="link" href="add-permit.php">ADD LOCAL TRANSPORT PERMIT</a></button>
+                    <button id="ltr-permit" type="submit"><a class="link" href="admin-add-permit.php">ADD LOCAL TRANSPORT PERMIT</a></button>
                     </th>
                     <th>                        
                     </th>                    
@@ -105,26 +120,26 @@ if(isset($_POST['accept'])){
                     </thead>
                     <tbody>
                         <?php
-                        include 'config.php';
+                        
+                        $date = date('Y');
                         $querySubmit="SELECT * FROM `ltr_permit` where status='submitted'";
                         $sqlSubmit=mysqli_query($con,$querySubmit);                        
                         while($row = mysqli_fetch_array($sqlSubmit)){
                             echo'
                              <tr>
-                                <td >'. $row['id'] .'</td>
+                                <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                 <td >'. $row['date'].'</td>
                                 <td ></td>
                                 <td >'. $row['date'].'</td>  
                                 <td >'. $row['date'].'</td> 
                                 <form method="POST">             
-                                <td ><button class="btn">VIEW</button></td>              
+                                <td ><button class="btn bgreenBtn"><a href="admin-view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>              
                                 <td >  
                                 <form method="POST">
                                     <input type="hidden" name="submit-id" value="'.  $row['id'] .'">
-                                    <button class="btn blueBtn">EDIT</button>
                                     <button class="btn greenBtn" name="accept">ACCEPT</button>
-                                    <button class="btn yellowBtn">RETURN</button>
-                                    <button class="btn redBtn">DELETE</button>                               
+                                    <button class="btn yellowBtn" name="return">RETURN</button>
+                                    <button class="btn redBtn"><a href="delete.php?admin-delete-ltr-id='. $row['id'].'">DELETE</a></button>                                          
 
                                 </td> 
                                 </form>            

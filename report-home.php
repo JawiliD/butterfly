@@ -1,15 +1,5 @@
 <?php
-$username = "root";
-$password = "";
-$database = "data";
 
- try {
-    $pdo = new PDO("mysql:host=localhost;database=$database", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-}
-    catch(PDOException $e) {
-        die("ERROR: Could not connect. " . $e->getMessage());
-    }
  
 ?>
 
@@ -32,6 +22,7 @@ $database = "data";
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
             <li id="report-menu"><a href=""><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        

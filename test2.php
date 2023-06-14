@@ -1,77 +1,98 @@
+<?php
+include 'config.php';
+$id = $_GET['generate-id'];
+$querySelect = "SELECT * FROM `ltr_permit` WHERE id=$id";
+$sqlSelect = mysqli_query($con, $querySelect);
+$row = mysqli_fetch_assoc($sqlSelect);
+?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Details Table</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
+    <style>
+        /* Styles for the payment modal */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .payment-modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2>Payment</h2>
+            <!-- Add your payment form or content here -->
+            <p>Payment details and form go here...</p>
+        </div>
+    </div>
 
-	<table id="detailsTable">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Age</th>
-				<th>Gender</th>
-			</tr>
-		</thead>
-		<tbody>
-			<!-- Table body will be filled dynamically -->
-		</tbody>
-	</table>
+    <div class="right-header">
+        <!-- Existing code for the right header -->
+    </div>
 
-	<form id="detailsForm" method="POST">
-		<label for="name">Name:</label>
-		<input type="text" id="name" name="name"><br>
+    <div class="top-header">
+        <!-- Existing code for the top header -->
+    </div>
 
-		<label>description</label>
-		<input type="text" id="description" name="age"><br>
+    <div class="content">
+        <!-- Existing code for the content section -->
+    </div>
 
-		<label for="gender">Gender:</label>
-		<input type="radio" id="male" name="gender" value="Male">
-		<label for="male">Male</label>
-		<input type="radio" id="female" name="gender" value="Female">
-		<label for="female">Female</label><br>
+    <script>
+        // Open the payment modal when the page is loaded
+        window.addEventListener('DOMContentLoaded', function() {
+            openPaymentModal();
+        });
 
-		<input type="button" value="Add Details" onclick="addDetails()">
-	</form>
+        // Function to open the payment modal
+        function openPaymentModal() {
+            var paymentModal = document.getElementById('paymentModal');
+            paymentModal.style.display = 'block';
+        }
 
-	<script>
-		// Array to store all the details
-		let details = [];
-
-		// Function to add the details to the table and the array
-		function addDetails() {
-			let name = document.getElementById("name").value;
-			let age = document.getElementById("age").value;
-			let gender = document.querySelector('input[name="gender"]:checked').value;
-
-			// Add the details to the array
-			details.push({ name: name, age: age, gender: gender });
-
-			// Clear the form
-			document.getElementById("detailsForm").reset();
-
-			// Call the function to display the details
-			displayDetails();
-		}
-
-		// Function to display the details in the table
-		function displayDetails() {
-			let tableBody = document.getElementById("detailsTable").getElementsByTagName("tbody")[0];
-			tableBody.innerHTML = "";
-
-			// Loop through the details array and add them to the table
-			for (let i = 0; i < details.length; i++) {
-				let row = tableBody.insertRow(i);
-				let nameCell = row.insertCell(0);
-				let ageCell = row.insertCell(1);
-				let genderCell = row.insertCell(2);
-				nameCell.innerHTML = details[i].name;
-				ageCell.innerHTML = details[i].age;
-				genderCell.innerHTML = details[i].gender;
-			}
-		}
-	</script>
-
+        // Function to close the payment modal
+        function closePaymentModal() {
+            var paymentModal = document.getElementById('paymentModal');
+            paymentModal.style.display = 'none';
+        }
+    </script>
 </body>
 </html>

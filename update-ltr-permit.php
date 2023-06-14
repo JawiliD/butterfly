@@ -1,12 +1,60 @@
-<?php 
+<?php
 include 'config.php';
 $id=$_GET['updateid'];
 $queryIdentify="Select * from `ltr_permit` where id=$id";
 $sqlIdenttify=mysqli_query($con,$queryIdentify);
 $row=mysqli_fetch_assoc($sqlIdenttify);
-if(isset($_POST['submit'])){
-    date_default_timezone_set("Asia/Manila");    
-    $date=date('y-m-d');;
+
+if (isset($_POST['submit']) || isset($_POST['draft'])) {
+    // Clear the butterfly details session variable
+    unset($_SESSION['butterflyDetails']);
+}
+
+if (isset($_POST['submit'])) {
+    date_default_timezone_set("Asia/Manila"); 
+    $status = 'submitted'; 
+    $dateTime = date('Y-m-d H:i:s');
+    $name = $_POST['name'];  
+    $wcp = $_POST['wcpnumber'];   
+    $address = $_POST['address'];   
+    $wfp = $_POST['wfpnumber'];   
+    $contact = $_POST['contact']; 
+    $destination = $_POST['destination'];   
+    $mode = $_POST['mode']; 
+    $purpose = $_POST['purpose'];  
+
+    $queryLTRpermit = "UPDATE `ltr_permit` SET status='submitted', date='$dateTime', name='$name', address='$address', contact='$contact', wcpNo='$wcp', wfpNo='$wfp',destination='$destination',mode='$mode',purpose='$purpose' where id=$id";
+    $sqlLTRpermit = mysqli_query($con, $queryLTRpermit);  
+    
+  
+    
+    if ($sqlLTRpermit) {
+        // Retrieve the last inserted LTR permit ID
+        $butterflyDetails = isset($_POST['butterfly-details']) ? json_decode($_POST['butterfly-details'], true) : array();
+        
+        // Insert butterfly details into the database
+        foreach ($butterflyDetails as $butterfly) {
+            $butterflyName = $butterfly['name'];
+            $description = $butterfly['description'];
+            $butterflyQuantity = $butterfly['quantity'];
+    
+            $queryButterflyDetails = "INSERT INTO `butterfly_details` (ltr_permit_id, name, description, quantity) VALUES ('$id', '$butterflyName', '$description', '$butterflyQuantity')";
+            $sqlButterflyDetails = mysqli_query($con, $queryButterflyDetails);
+            
+            if (!$sqlButterflyDetails) {
+                die(mysqli_error($con));
+            }
+        }
+    
+        header('location: client-application-status.php');
+    } else {
+        die(mysqli_error($con));
+    }
+    
+}elseif(isset($_POST['draft'])){
+    date_default_timezone_set("Asia/Manila"); 
+    $status='draft';   
+    $dateTime = date('Y-m-d H:i:s');
     $name=$_POST['name'];  
     $wcp=$_POST['wcpnumber'];   
     $address=$_POST['address'];   
@@ -17,15 +65,37 @@ if(isset($_POST['submit'])){
     $purpose=$_POST['purpose'];  
     
     
-    $queryLTRpermit = "update `butterfly` date='$date', name='$name', address='$address', contact='$contact', wcpNo='$wcp', wfpNo='$wfp',destination='$destination',mode='$mode' where id=$id";
+    $queryLTRpermit = "UPDATE `ltr_permit` SET date='$dateTime', name='$name', address='$address', contact='$contact', wcpNo='$wcp', wfpNo='$wfp',destination='$destination',mode='$mode',purpose='$purpose' where id=$id";
     $sqlLTRpermit = mysqli_query($con,$queryLTRpermit);
-    if($sqlLTRpermit){
-        header('location:client-application-status.php');
-    }else{
+
+    if ($sqlLTRpermit) {
+        // Retrieve the last inserted LTR permit ID
+        $butterflyDetails = isset($_POST['butterfly-details']) ? json_decode($_POST['butterfly-details'], true) : array();
+        
+        // Insert butterfly details into the database
+        foreach ($butterflyDetails as $butterfly) {
+            $butterflyName = $butterfly['name'];
+            $description = $butterfly['description'];
+            $butterflyQuantity = $butterfly['quantity'];
+    
+            $queryButterflyDetails = "INSERT INTO `butterfly_details` (ltr_permit_id, name, description, quantity) VALUES ('$id', '$butterflyName', '$description', '$butterflyQuantity')";
+            $sqlButterflyDetails = mysqli_query($con, $queryButterflyDetails);
+            
+            if (!$sqlButterflyDetails) {
+                die(mysqli_error($con));
+            }
+        }
+    
+        header('location: client-application-status.php');
+    } else {
         die(mysqli_error($con));
     }
 }
+
+
+$butterflyDetails = isset($_SESSION['butterflyDetails']) ? $_SESSION['butterflyDetails'] : array();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,16 +107,15 @@ if(isset($_POST['submit'])){
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
-   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <div class="right-header">
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
-            <li class="admin"><a href="admin-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
-            <li class="butterfly"><a href="butterfly.php"><h4>Butterfly</h4></a></li>
-            <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
-            <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li class="admin"><a href="client-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Name of client</h4></a></li>
+            
         </ul>
     </div>
     <div class="top-header">        
@@ -56,10 +125,9 @@ if(isset($_POST['submit'])){
         
     </div> 
     <div class="content">   
-        <div class="permit-details">
-           
-            <form method="POST">
-                <table class="personal-div">
+        <div class="permit-details">       
+        <form id="permitForm" method="POST">
+        <table class="personal-div">
                 <h2>Application Details</div>
                     <tr>
                         <td><h3>Personal Details</h3></td>
@@ -108,7 +176,7 @@ if(isset($_POST['submit'])){
                     <tr>
                         <td>
                     </tr>                    
-                </table>
+                </table>         
                 <h2>Butterfly Details</h2>
                 <div class="butterfly-details-div">                
                 <table class="butterfly-details-table">
@@ -120,29 +188,90 @@ if(isset($_POST['submit'])){
                             <th>Action</th>
                         </tr>
                         <tr>
-                            <td><input type="text" placeholder="Name"></td>
-                            <td><input type="text" placeholder="Description"></td>
-                            <td><input type="number" placeholder="Quantity"></td>
-                            <td><button class="btn blueBtn">ADD BUTTERFLY</button></td>
+                            <td><input type="text" name="butterfly-name" placeholder="Common/Scientific Name"></td>
+                            <td><input type="text" name="description" placeholder="Description"></td>
+                            <td><input type="number" name="butterfly-quantity" placeholder="Quantity"></td>
+                            <td><button name="add-butterfly" class="btn blueBtn">ADD BUTTERFLY</button></td>
                         </tr>
                     </thead>
-                    <tbody>                      
-                       
+                    <tbody>
+                    <?php                         
+                        $queryIdentifyButterfly="SELECT * FROM `butterfly_details` where ltr_permit_id=$id";
+                        $sqlIdenttifyButterfly=mysqli_query($con,$queryIdentifyButterfly);
+                        while($row1=mysqli_fetch_assoc($sqlIdenttifyButterfly)){
+                            echo '<tr>
+                            <td>'.$row1['name'].'</td>
+                            <td>'.$row1['description'].'</td>
+                            <td>'.$row1['quantity'].'</td>                            
+                        </tr>';
+                        }
+                        
+                         ?>  
                         
                     </tbody>
+                    <input type="hidden" name="ltr_permit_id" value="<?php echo $ltrPermitID; ?>">
+                    <input type="hidden" name="butterfly-details" id="butterfly-details-input" value="<?php echo htmlspecialchars(json_encode($butterflyDetails)); ?>">
                 </table>
                 </div><br><br>
                 <div style="float:right">
                     <button class="btn greenBtn" name="submit">SUBMIT</button>               
-                    <button class="btn yellowBtn">SAVE AS DRAFT</button>
-                    <button class="btn redBtn">CANCEL</button>
+                    <button class="btn yellowBtn" name="draft">SAVE AS DRAFT</button>
+                    <button class="btn redBtn"><a class="link" href="admin-application-submit.php">CANCEL</a></button>
                 </div>
             </form>
         </div>
     </div>
-        
-  
 
+    <script>
+   $(document).ready(function() {
+    $('.btn.blueBtn[name="add-butterfly"]').click(function(e) {
+        e.preventDefault(); // Prevent form submission
 
+        var butterflyName = $('input[name="butterfly-name"]').val();
+        var description = $('input[name="description"]').val();
+        var butterflyQuantity = $('input[name="butterfly-quantity"]').val();
+
+        // Create the table row HTML
+        var newRow = '<tr>' +
+            '<td>' + butterflyName + '</td>' +
+            '<td>' + description + '</td>' +
+            '<td>' + butterflyQuantity + '</td>' +
+            '<td><button class="btn redBtn delete-butterfly">Delete</button></td>' +
+            '</tr>';
+
+        // Append the new row to the table body
+        $('.butterfly-details-table tbody').append(newRow);
+
+        // Clear the input fields
+        $('input[name="butterfly-name"]').val('');
+        $('input[name="description"]').val('');
+        $('input[name="butterfly-quantity"]').val('');
+
+        // Update the hidden input field with the updated butterfly details array
+        var currentDetails = JSON.parse($('#butterfly-details-input').val());
+        currentDetails.push({
+            name: butterflyName,
+            description: description,
+            quantity: butterflyQuantity
+        });
+        $('#butterfly-details-input').val(JSON.stringify(currentDetails));
+    });
+
+    // Delete butterfly row
+    $(document).on('click', '.btn.redBtn.delete-butterfly', function(e) {
+        e.preventDefault();
+
+        // Remove the row from the table
+        $(this).closest('tr').remove();
+
+        // Update the hidden input field with the updated butterfly details array
+        var currentDetails = JSON.parse($('#butterfly-details-input').val());
+        var rowIndex = $(this).closest('tr').index();
+        currentDetails.splice(rowIndex, 1);
+        $('#butterfly-details-input').val(JSON.stringify(currentDetails));
+    });
+});
+
+    </script>
 </body>
 </html>

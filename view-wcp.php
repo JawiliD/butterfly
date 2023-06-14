@@ -1,23 +1,10 @@
 <?php 
 include 'config.php';
-if(isset($_POST['save'])){  
-    $species=$_POST['speciestype'];   
-    $classN=$_POST['classname'];   
-    $familyN=$_POST['familyname'];   
-    $commonN=$_POST['commonname'];   
-    $scientificN=$_POST['scientificname'];   
-    $typeS=$_POST['typeofspecimen'];   
-    $quantity=$_POST['quantity'];   
-    $description=$_POST['description'];   
+$id = $_GET['view-id'];
 
-    $sql="insert into `butterfly` (speciesType,className,familyName,commonName,scientificName,typeOfSpecimen,quantity,description) values('$species','$classN','$familyN','$commonN','$scientificN','$typeS','$quantity','$description')";
-    $result=mysqli_query($con,$sql);
-    if($result){
-        header('location:butterfly.php');
-    }else{
-        die(mysqli_error($con));
-    }
-}
+$queryWCP = "SELECT * FROM `wcp_permit` where id=$id";
+$sqlWCP = mysqli_query($con,$queryWCP);
+$row = mysqli_fetch_array($sqlWCP);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +27,7 @@ if(isset($_POST['save'])){
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li class="butterfly"><h4>Wildlife Permit</h4></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -57,37 +45,35 @@ if(isset($_POST['save'])){
             <tr>
                         <td>
                             <label>Business Name: </label><br>
-                            <p></p>
+                            <p><?php echo $row['businessName'] ?></p>
                         </td> 
                         <td>
                             <label>Owner's Name: </label><br>
-                            <p></p>
+                            <p><?php echo $row['ownerName'] ?></p>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Address:</label><br>
-                            <p></p>
+                            <p><?php echo $row['address'] ?></p>
                         </td>                        
                         <td>
                             <label>Date Issue:</label><br>
-                            <p></p>
+                            <p><?php echo $row['dateIssue'] ?></p>
                         </td>                         
                     </tr>
                     <tr>
                         <td>
                             <label>Expiration:</label><br>
-                            <p></p>
+                            <p><?php echo $row['expirationDate'] ?></p>
                         </td>
                         <td>
-                            <label>Quantity:</label><br>
-                            <p></p>
+                            <label>WCP No:</label><br>
+                            <p><?php echo $row['wcpNo'] ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <label>Description:</label><br>
-                            <p></p>
+                        <td>                            
                         </td>
                         <td>                            
                         </td>

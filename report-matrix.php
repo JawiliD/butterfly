@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
    
 </head>
@@ -17,6 +17,7 @@
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></l>            
             <li id="report-menu"><a href=""><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -84,7 +85,7 @@
                             <th>Region</th>
                             <th>Office</th>
                             <th>LTP<br>(1-2 days)</th>
-                            <th>NAme of Permittee<br>(Name, MI, Surname)</th>                                     
+                            <th>Name of Permittee<br>(Name, MI, Surname)</th>                                     
                             <th>Permit Number<br>(xxx-####)</th>                                            
                             <th>LTP<br>Date Issued<br>(mm/dd/yyyy)</th>                                            
                             <th>Date received<br>by Client<br>(mm/dd/yyyy)</th>                                            

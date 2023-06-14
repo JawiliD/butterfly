@@ -1,23 +1,10 @@
 <?php 
 include 'config.php';
-if(isset($_POST['save'])){  
-    $species=$_POST['speciestype'];   
-    $classN=$_POST['classname'];   
-    $familyN=$_POST['familyname'];   
-    $commonN=$_POST['commonname'];   
-    $scientificN=$_POST['scientificname'];   
-    $typeS=$_POST['typeofspecimen'];   
-    $quantity=$_POST['quantity'];   
-    $description=$_POST['description'];   
+$id = $_GET['view-id'];
 
-    $sql="insert into `butterfly` (speciesType,className,familyName,commonName,scientificName,typeOfSpecimen,quantity,description) values('$species','$classN','$familyN','$commonN','$scientificN','$typeS','$quantity','$description')";
-    $result=mysqli_query($con,$sql);
-    if($result){
-        header('location:butterfly.php');
-    }else{
-        die(mysqli_error($con));
-    }
-}
+$queryWFP = "SELECT * FROM `wfp_permit` where id=$id";
+$sqlWFP = mysqli_query($con,$queryWFP);
+$row = mysqli_fetch_array($sqlWFP);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,9 +24,10 @@ if(isset($_POST['save'])){
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
             <li class="admin"><a href="admin-profile.php"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Administrator</h4></a></li>
-            <li><a href=""><h4>Butterfly</h4></a></li>
+            <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li class="butterfly"><h4>Wildlife Permit</h4></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -49,44 +37,43 @@ if(isset($_POST['save'])){
         
     </div> 
     <div class="content">   
-        <div class="add-butterfly" style="height:30em;">
-            <h2>Wildlife Farm Details</h2>
-            <form method="POST">
-                <table>
-                    <tr>
+    <div class="container">
+        <table>
+            <tr style="margin:0em;"><td style="width:80%"><h3 >Wildlife Collector's Permit Details</td><td></h3><img style="display:flex;justify-content:right;" src="image/logo2.png" width="75"></td></tr>
+                    </table>
+            <table class="details" style="margin-top:0em;">
+            <tr>
                         <td>
-                            <label>Business Name</label><br>
-                            <input name="businessname" type="text" placeholder="Species Type" required="required">
+                            <label>Business Name: </label><br>
+                            <p><?php echo $row['businessName'] ?></p>
                         </td> 
                         <td>
-                            <label>Owner's Name</label><br>
-                            <input name="ownersname" type="text" placeholder="Class Name" required="required">
+                            <label>Owner's Name: </label><br>
+                            <p><?php echo $row['ownerName'] ?></p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Address</label><br>
-                            <input name="address" type="text" placeholder="Family Name" required="required">
+                            <label>Address:</label><br>
+                            <p><?php echo $row['address'] ?></p>
                         </td>                        
                         <td>
-                            <label>Date Issue</label><br>
-                            <input name="dateissue" type="text" placeholder="Common Name" required="required">
+                            <label>Date Issue:</label><br>
+                            <p><?php echo $row['dateIssue'] ?></p>
                         </td>                         
                     </tr>
                     <tr>
                         <td>
-                            <label>Expiration</label><br>
-                            <input name="expiration" type="text" placeholder="Scientific Name" required="required">
+                            <label>Expiration:</label><br>
+                            <p><?php echo $row['expirationDate'] ?></p>
                         </td>
                         <td>
-                            <label>Quantity</label><br>
-                            <input name="quantity" type="text" placeholder="Type of Specimen" required="required">
+                            <label>WCP No:</label><br>
+                            <p><?php echo $row['wfpNo'] ?></p>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <label>Description</label><br>
-                            <input name="description" type="number" placeholder="Quantity" required="required">
+                        <td>                            
                         </td>
                         <td>                            
                         </td>
@@ -95,14 +82,13 @@ if(isset($_POST['save'])){
                         <td>                                                    
                         </td>
                         <td>
-                        <div>
-                            <button class="btn blueBtn" name="save" type="submit">SAVE</button>
-                            <button class="btn redBtn" ><a class="link" href="wildlife-farm.php">CANCEL</a></button> 
+                        <div>                            
+                            <button class="btn redBtn" id="close" style="float:right;"><a href="wildlife-collector.php">BACK</button> 
                         </div>    
                         </td>
-                    </tr>
-                </table>                            
-            </form>                        
+                    </tr>    
+                    
+                </table>    
         </div>
     </div>
         
@@ -111,3 +97,5 @@ if(isset($_POST['save'])){
 
 </body>
 </html>
+
+

@@ -3,10 +3,10 @@ include 'config.php';
 
 if(isset($_POST['release'])){
     $accept_id = isset($_POST['accept-id']) ? $_POST['accept-id'] : null;
-    $status = "release";
+    $status = "released";
     date_default_timezone_set("Asia/Manila");
-    $date=date('y-m-d');    
-    $queryReleaseBtn = "UPDATE ltr_permit SET status = '$status', dateReleased = '$date' WHERE id = $accept_id";
+    $dateTime = date('Y-m-d H:i:s');    
+    $queryReleaseBtn = "UPDATE ltr_permit SET status = '$status', dateReleased = '$dateTime' WHERE id = $accept_id";
     $sqlReleaseBtn = mysqli_query($con, $queryReleaseBtn);
     if($sqlReleaseBtn){
         header('location:admin-application-accept.php');
@@ -23,9 +23,15 @@ if(isset($_POST['release'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
-   
+    <style>
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    </style>
+
 </head>
 <body>
     <div class="right-header">
@@ -35,6 +41,7 @@ if(isset($_POST['release'])){
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -60,6 +67,12 @@ if(isset($_POST['release'])){
     <div class="content"> 
         <!-- the green background is just a guide for the size of workarea -->
         <!-- -----start programming here------ --> 
+    <script>
+            function disableGenerateButton() {
+                var generateButton = document.getElementById('generate');
+                generateButton.classList.add('disabled');
+            }
+        </script>
     <div class="report">
     
     <div class="search">
@@ -92,26 +105,27 @@ if(isset($_POST['release'])){
                     </thead>
                     <tbody>
                         <?php
-                            
+                            $date = date('Y');
                             $queryAccept="SELECT * FROM `ltr_permit` where status='accepted'";
                             $sqlAccept=mysqli_query($con,$queryAccept);
                             while($row=mysqli_fetch_array($sqlAccept)){
                                 echo '
                                 <tr>
-                                    <td >'. $row['id'] .'</td>
+                                    <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                     <td >'. $row['date'].'</td>
                                     <td ></td>
                                     <td >'. $row['date'].'</td>  
                                     <td >'. $row['date'].'</td> 
                                     <form method="POST">             
-                                    <td ><button class="btn bgreenBtn">VIEW</button></td>
-                                    <form method="POST">              
-                                    <td >
-                                        <button class="btn yellowBtn"><a href="generate-docs.php?generate-id='. $row['id'].'">GENERATE</a></button>  
-                                        <button class="btn greenBtn" name="release">RELEASE</button> 
-                                        <input type="hidden" name="accept-id" value="'.  $row['id'] .'">                                     
-                                    </td>   
-                                    </form>          
+                                    <td ><button class="btn bgreenBtn"><a href="admin-view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
+                                    <td>
+                                    <form method="POST">
+                                        <button id="generate" class="btn yellowBtn" onclick="disableGenerateButton()"><a href="payment-official-details.php?payment-id=' . $row['id'] . '">GENERATE</a></button>
+                                        <button class="btn greenBtn" name="release">RELEASE</button>
+                                        <input type="hidden" name="accept-id" value="' . $row['id'] . '">
+                                    </form>
+                                        </td>
+                                            
                                 </tr>';
                             }
                         ?>
@@ -121,24 +135,12 @@ if(isset($_POST['release'])){
                 </div>
             </div>
         </div>
-        <!-- Button to open the modal -->
-<button id="openModalBtn">Open Modal</button>
     </div>
-
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Modal content goes here.</p>
-  </div>
-
-</div>
-
-<script src="js/script.js">
+    <script>
+        function disableGenerateButton() {
+            var generateButton = document.getElementById('generate');
+            generateButton.disabled = true;
+        }
     </script>
     
     

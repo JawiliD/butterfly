@@ -10,21 +10,22 @@
    
 </head>
 <body>
-    <div class="right-header">
+<div class="right-header">
         <img class="logo " src="image/logo.png" alt="logo">
         <ul>
-            <li id="admin" class="admin"><h4><i id="admin-icon" class="fa-solid fa-user"></i>Name of Client</h4></li>
-            
+            <li id="admin" class="admin" ><h4></i>Home</h4></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
             <h1>WILDLIFE BUTTERFLY</h1>          
 
-        <hr>        
-            <a href="client-profile.php">PROFILE</a>           
-                <a id="application">APPLICATION</a>         
-            <a href="client-report.php">REPORTS</a>                   
+        <hr>
+        <a href="client-home.php">HOME</a> 
+        <a href="client-profile.php">PROFILE</a>
+        <a id="profile" href="client-application-status.php">APPLICATION</a>              
+        <a href="client-report.php">REPORTS</a>              
     </div>
 
     <div class="content"> 
@@ -43,22 +44,8 @@
                     </form>
                 </th>
             </tr>
-        </table>       
-    </div>
-        <form action="add-permit.php" method="POST">
-            <table>
-                <tr>
-                    <th>
-                    <button id="ltr-permit" type="submit">ADD LOCAL TRANSPORT PERMIT</button>
-                    </th>
-                    <th>                        
-                    </th>                    
-                    <th>                        
-                    </th>
-                </tr>
-            </table>
-        </form><br><br>
-        <i class="fa-sharp fa-regular fa-filter-list"></i>
+        </table><br><br>     
+    </div>       
         <form method="POST">
         <label for="status">Filter by:</label>
             <select name="status" id="status">
@@ -75,14 +62,17 @@
 
         <?php
        include 'config.php';
+       $id = $_SESSION['id'];
        if(isset($_POST['filter'])){
+           $date = date('Y');
            $status=$_POST['status'];
-           $queryPermit="SELECT * FROM `ltr_permit` where status='$status'";
+           $queryPermit="SELECT * FROM `ltr_permit` where status='$status' AND userId='$id'";
            $sqlpermit = mysqli_query($con,$queryPermit);
            switch ($status){
                case "submitted":
                    echo "
                        <div class='table-div'>
+                       <h2>SUBMITTED</h2>
                            <div class='report-table'>
                                <table>
                                    <thead>
@@ -91,7 +81,7 @@
                                            <th>Date and Time<br>Encoded</th>
                                            <th>Received by<br>(Name of<br>PENRO personnel)</th>
                                            <th>Date & Time Updated</th>
-                                           <th>Date & Tine Submitted</th>
+                                           <th>Date & Time Submitted</th>
                                            <th>Uploaded<br>Requirement</th>
                                            <th>Action</th>
                                        </tr>
@@ -101,15 +91,14 @@
                    while($row = mysqli_fetch_array($sqlpermit)) {
                        echo'
                                        <tr>
-                                           <td >' . $row['id']. '</td>
+                                           <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                            <td >' . $row['date'].'</td>
                                            <td ></td>
+                                           <td >' . $row['dateUpdated'].'</td>
                                            <td >' . $row['date'].'</td>
-                                           <td >' . $row['date'].'</td>
-                                           <td ></td>
+                                           <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
                                            <td>
-                                               <button><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>Edit</a></button>
-                                               <button class=\'deleteBtn\'><a href=\'delete.php?delete-ltr-id='. $row['id'].'\' class=\'text-light\'>Delete</a></button>
+                                               
                                            </td>
                                        </tr>';
                    }
@@ -118,6 +107,7 @@
                case "draft":
                 echo "
                 <div class='table-div'>
+                <h2>DRAFT</h2>
                     <div class='report-table'>
                         <table>
                             <thead>
@@ -128,6 +118,7 @@
                                     <th>Date & Time Updated</th>
                                     <th>Date & Tine Submitted</th>
                                     <th>Uploaded<br>Requirement</th>
+                                    <th>Remarks</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -136,15 +127,16 @@
             while($row = mysqli_fetch_array($sqlpermit)) {
                 echo'
                                 <tr>
-                                    <td >' . $row['id']. '</td>
+                                    <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                     <td >' . $row['date'].'</td>
                                     <td ></td>
+                                    <td >' . $row['dateUpdated'].'</td>
                                     <td >' . $row['date'].'</td>
-                                    <td >' . $row['date'].'</td>
-                                    <td ></td>
+                                    <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
+                                    <td >'.$row['remarks'].'</td>
                                     <td>
-                                        <button><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>Edit</a></button>
-                                        <button class=\'deleteBtn\'><a href=\'delete.php?delete-ltr-id='. $row['id'].'\' class=\'text-light\'>Delete</a></button>
+                                        <button class="btn greenBtn" ><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>REWORK</a></button>
+                                        <button class=\'btn redBtn deleteBtn\'><a href=\'delete.php?delete-ltr-id='. $row['id'].'\' class=\'text-light\'>Delete</a></button>
                                     </td>
                                 </tr>';
             }
@@ -153,6 +145,7 @@
                    case "returned":
                     echo "
                         <div class='table-div'>
+                        <h2>RETURNED</h2>
                             <div class='report-table'>
                                 <table>
                                     <thead>
@@ -172,15 +165,13 @@
                     while($row = mysqli_fetch_array($sqlpermit)) {
                         echo'
                                         <tr>
-                                            <td >' . $row['id']. '</td>
+                                            <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                             <td >' . $row['date'].'</td>
                                             <td ></td>
+                                            <td >' . $row['dateUpdated'].'</td>
                                             <td >' . $row['date'].'</td>
-                                            <td >' . $row['date'].'</td>
-                                            <td ></td>
-                                            <td>
-                                                <button><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>Edit</a></button>
-                                                <button class=\'deleteBtn\'><a href=\'delete.php?delete-ltr-id='. $row['id'].'\' class=\'text-light\'>Delete</a></button>
+                                            <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
+                                            <td>                                                
                                             </td>
                                         </tr>';
                     }
@@ -189,7 +180,8 @@
                 case "accepted":
                  echo "
                  <div class='table-div'>
-                     <div class='report-table'>
+                 <h2>ACCEPTED</h2>
+                     <div class='report-table'>                     
                          <table>
                              <thead>
                                  <tr>
@@ -208,15 +200,13 @@
              while($row = mysqli_fetch_array($sqlpermit)) {
                  echo'
                                  <tr>
-                                     <td >' . $row['id']. '</td>
+                                     <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                      <td >' . $row['date'].'</td>
                                      <td ></td>
+                                     <td >' . $row['dateUpdated'].'</td>
                                      <td >' . $row['date'].'</td>
-                                     <td >' . $row['date'].'</td>
-                                     <td ></td>
+                                     <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
                                      <td>
-                                         <button><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>Edit</a></button>
-                                         <button class=\'deleteBtn\'><a href=\'delete.php?delete-ltr-id='. $row['id'].'\' class=\'text-light\'>Delete</a></button>
                                      </td>
                                  </tr>';
              }
@@ -225,6 +215,7 @@
                     case "released":
                         echo "
                             <div class='table-div'>
+                            <h2>RELEASED</h2>
                                 <div class='report-table'>
                                     <table>
                                         <thead>
@@ -247,16 +238,16 @@
                         while($row = mysqli_fetch_array($sqlpermit)) {
                             echo'
                                             <tr>
-                                                <td >' . $row['id']. '</td>
+                                                <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                                 <td >' . $row['date'].'</td>
                                                 <td ></td>
-                                                <td >' . $row['date'].'</td>
-                                                <td >' . $row['date'].'</td>
+                                                <td >' . $row['dateReleased'].'</td>
                                                 <td ></td>
-                                                <td>
-                                                    <button><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>Edit</a></button>
-                                                    <button class=\'deleteBtn\'><a href=\'delete.php?delete-ltr-id='. $row['id'].'\' class=\'text-light\'>Delete</a></button>
-                                                </td>
+                                                <td >' . $row['expirationDate'].'</td>
+                                                <td >' . $row['dateAccepted'].'</td>
+                                                <td ></td>
+                                                <td ><td ><button class="btn bgreenBtn"><a href="client-generate-docs.php?generate-id='. $row['id'].'">VIEW REPORTS</a></button></td>
+                                               
                                             </tr>';
                         }
                         echo "</tbody></table></div></div>";
@@ -264,6 +255,7 @@
                     case "expired":
                      echo "
                      <div class='table-div'>
+                     <h2>EXPIRED</h2>
                          <div class='report-table'>
                              <table>
                                  <thead>
@@ -282,16 +274,13 @@
                  while($row = mysqli_fetch_array($sqlpermit)) {
                      echo'
                                      <tr>
-                                         <td >' . $row['id']. '</td>
-                                         <td >' . $row['date'].'</td>
+                                         <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
+                                         <td >' . $row['dateReleased'].'</td>
                                          <td ></td>
-                                         <td >' . $row['date'].'</td>
-                                         <td >' . $row['date'].'</td>
-                                         <td ></td>
-                                         <td>
-                                             <button><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>Edit</a></button>
-                                             <button class=\'deleteBtn\'><a href=\'delete.php?delete-ltr-id='. $row['id'].'\' class=\'text-light\'>Delete</a></button>
-                                         </td>
+                                         <td >' . $row['expirationDate'].'</td>
+                                         <td ><button class="btn bgreenBtn"><a href="generate-docs.php?generate-id='. $row['id'].'">VIEW REPORTS</a></button></td>
+                                         <td></td>             
+                                                                             
                                      </tr>';
                  }
                  echo "</tbody></table></div></div>";
@@ -318,7 +307,7 @@
                         while($row = mysqli_fetch_array($sqlpermit)) {
                             echo'
                                             <tr>
-                                                <td >' . $row['id']. '</td>
+                                                <td > PMDQ-LTP-'. $date.'-' . $row['id'] .'</td>
                                                 <td >' . $row['date'].'</td>
                                                 <td ></td>
                                                 <td >' . $row['date'].'</td>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f30985c93b.js" crossorigin="anonymous"></script>
    
 </head>
@@ -17,6 +17,7 @@
             <li><a href="butterfly.php"><h4>Butterfly</h4></a></li>
             <li><a href="wildlife-farm.php"><h4>Wildlife Permit</h4></a></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
@@ -76,27 +77,36 @@
                         </tr>                                               
                     </thead>
                     <tbody>
-                        <?php
+                    <?php
                         include 'config.php';
-                        $queryRelease="SELECT * FROM `ltr_permit` where status='release'";
-                        $sqlRelease=mysqli_query($con,$queryRelease);
-                        while($row = mysqli_fetch_array($sqlRelease)){
-                            echo '<tr>
-                                    <td >'. $row['id'].'</td>
-                                    <td >'. $row['date'].'</td>
-                                    <td ></td>
-                                    <td ></td>  
-                                    <td ></td>              
-                                    <td ></td>              
-                                    <td ></td>
-                                    <td ></td>              
-                                    <td ></td>              
-                                    <td ></td>             
-                                </tr>';
-                         }
+                        $date = date('Y');
+                        $queryRelease = "SELECT * FROM `ltr_permit` WHERE status='released'";
+                        $sqlRelease = mysqli_query($con, $queryRelease);
+
+                        while ($row = mysqli_fetch_array($sqlRelease)) {
+                            $releaseDate = $row['dateReleased'];
+                            $expirationDate = date('Y-m-d', strtotime($releaseDate . ' +1 days'));
                             
+                            if ($releaseDate >= $expirationDate) {
+                                $queryExpire = "UPDATE `ltr_permit` SET status = 'expired', expirationDate='$expirationDate' WHERE dateReleased = '$releaseDate'";
+                                $sqlExpired = mysqli_query($con, $queryExpire);
+                            }
+
+                            echo '<tr>
+                                <td>PMDQ-LTP-' . $date . '-' . $row['id'] . '</td>
+                                <td>' . $row['date'] . '</td>
+                                <td></td>
+                                <td>' . $row['dateReleased'] . '</td>
+                                <td></td>
+                                <td>' . $expirationDate . '</td>
+                                <td>' . $row['dateAccepted'] . '</td>
+                                <td></td>
+                                <td><button class="btn bgreenBtn"><a href="view-docs.php?generate-id=' . $row['id'] . '">VIEW REPORTS</a></button></td>
+                                <td></td>
+                            </tr>';
+                        }
                         ?>
-                        
+                                    
                         </tbody>
                     </table>
                 </div>
