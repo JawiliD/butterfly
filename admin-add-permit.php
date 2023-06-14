@@ -48,46 +48,7 @@ if (isset($_POST['submit'])) {
         die(mysqli_error($con));
     }
     
-// }elseif(isset($_POST['draft'])){
-//     date_default_timezone_set("Asia/Manila"); 
-//     $status='draft';   
-//     $dateTime = date('Y-m-d H:i:s');
-//     $name=$_POST['name'];  
-//     $wcp=$_POST['wcpnumber'];   
-//     $address=$_POST['address'];   
-//     $wfp=$_POST['wfpnumber'];   
-//     $contact=$_POST['contact']; 
-//     $destination=$_POST['destination'];   
-//     $mode=$_POST['mode']; 
-//     $purpose=$_POST['purpose'];  
-    
-    
-//     $queryLTRpermit = "insert into `ltr_permit` (name,address,contact,wcpNo,wfpNo,destination,mode,purpose,date,status) values('$name','$address','$contact','$wcp','$wfp','$destination','$mode','$purpose','$dateTime','$status')";
-//     $sqlLTRpermit = mysqli_query($con,$queryLTRpermit);
 
-//     if ($sqlLTRpermit) {
-//         // Retrieve the last inserted LTR permit ID
-//         $ltrPermitID = mysqli_insert_id($con);
-//         $butterflyDetails = isset($_POST['butterfly-details']) ? json_decode($_POST['butterfly-details'], true) : array();
-        
-//         // Insert butterfly details into the database
-//         foreach ($butterflyDetails as $butterfly) {
-//             $butterflyName = $butterfly['name'];
-//             $description = $butterfly['description'];
-//             $butterflyQuantity = $butterfly['quantity'];
-    
-//             $queryButterflyDetails = "INSERT INTO `butterfly_details` (ltr_permit_id, name, description, quantity) VALUES ('$ltrPermitID', '$butterflyName', '$description', '$butterflyQuantity')";
-//             $sqlButterflyDetails = mysqli_query($con, $queryButterflyDetails);
-            
-//             if (!$sqlButterflyDetails) {
-//                 die(mysqli_error($con));
-//             }
-//         }
-    
-//         header('location: admin-application-submit.php');
-//     } else {
-//         die(mysqli_error($con));
-//     }
 }
 
 

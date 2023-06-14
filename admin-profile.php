@@ -31,7 +31,7 @@ $id = $_SESSION['id'];
             <h1>WILDLIFE BUTTERFLY</h1>          
 
         <hr>        
-        <a id="profile">PROFILE</a>
+        <a id="profile">HOME</a>
             <div id="dropdown">
                 <a>APPLICATION</a>
                 <div id="dropdown-content">
@@ -48,9 +48,44 @@ $id = $_SESSION['id'];
 
     <div class="content"> 
         <!-- the green background is just a guide for the size of workarea -->
-        <!-- -----start programming here------ -->    
-        <?php date_default_timezone_set("Asia/Manila"); echo date("l Y/m/d") ?> 
-        <?php echo $_SESSION['fname']; ?>
+        <!-- -----start programming here------ -->
+        <h3> Welcome  <?php echo $_SESSION['fname']; ?></h3>    
+        <h3> Today is <?php date_default_timezone_set("Asia/Manila"); echo date("l Y/m/d") ?> </h3>
+        <?php
+        $query1 = "SELECT COUNT(*) AS row_count1 FROM ltr_permit where status='submitted'";
+        $result1 = mysqli_query($con, $query1);
+        $row1 = mysqli_fetch_assoc($result1);
+        $query2 = "SELECT COUNT(*) AS row_count2 FROM ltr_permit where status='accepted'";
+        $result2 = mysqli_query($con, $query2);
+        $row2 = mysqli_fetch_assoc($result2);
+        $query3 = "SELECT COUNT(*) AS row_count3 FROM ltr_permit where status='returned'";
+        $result3 = mysqli_query($con, $query3);
+        $row3 = mysqli_fetch_assoc($result3);
+        $query4 = "SELECT COUNT(*) AS row_count4 FROM ltr_permit where status='expired'";
+        $result4 = mysqli_query($con, $query4);
+        $row4 = mysqli_fetch_assoc($result4);
+        $query5 = "SELECT COUNT(*) AS row_count5 FROM ltr_permit where status='used'";
+        $result5 = mysqli_query($con, $query5); 
+        $row5 = mysqli_fetch_assoc($result5);
+        $query6 = "SELECT COUNT(*) AS row_count6 FROM ltr_permit where status='released'";
+        $result6 = mysqli_query($con, $query6); 
+        $row6 = mysqli_fetch_assoc($result6);      
+        
+   
+
+        ?>
+        <h3> The following are the total number of application permit as of today: </h3>
+        <div class="grid-container">
+            <div class="grid-item submitted"><h3>Submitted</h3><h5>total number (<?php echo $row1['row_count1'] ?>)</h5></div>
+            <div class="grid-item accepted"><h3>Accepted</h3><h5>total number (<?php echo $row2['row_count2'] ?>)</h5></div>
+            <div class="grid-item returned"><h3>Returned</h3><h5>total number (<?php echo $row3['row_count3'] ?>)</h5></div>
+            <div class="grid-item release"><h3>Released</h3><h5>total number (<?php echo $row6['row_count6'] ?>)</h5></div>
+            <div class="grid-item expired"><h3>Expired</h3><h5>total number (<?php echo $row4['row_count4'] ?>)</h5></div>
+            <div class="grid-item used"><h3>Used</h3><h5>total number (<?php echo $row5['row_count5'] ?>)</h5></div>
+            </div>
+
+           
+       
      
         
 

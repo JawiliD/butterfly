@@ -4,6 +4,7 @@
  $queryUser = "SELECT * from `user_tb` where id = $id";
  $sqlUser = mysqli_query($con, $queryUser);
  $row = mysqli_fetch_array($sqlUser);
+ 
 
  if(isset($_POST['save'])){  
     

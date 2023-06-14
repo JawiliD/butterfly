@@ -63,11 +63,15 @@ $row2 = mysqli_fetch_assoc($sqlOfficialDetails);
                .ltr-content, .ltr-content *{
                 visibility:visible;
                 width:210mm;
-                height:297mm;
-                
+                height:297mm;           
         
                
                }
+               .bDetails td{
+                background-color:white;
+                border:none;
+                font-weight:normal;
+            }
                .ltr-content{                
                 left:2px;
                 top:0px;                
@@ -77,7 +81,7 @@ $row2 = mysqli_fetch_assoc($sqlOfficialDetails);
                
             }
         </style>
-        <div class="generate-doc">
+         <div class="generate-doc">
         <a href="admin-application-accept.php" class="back">BACK</a> 
         <a  onclick="printDiv('printThis')"><i class="fa-solid fa-print fa-fade fa-2xl" style="padding: 1em;display:flex;justify-content:right"></i></a>    
         <hr>
@@ -125,7 +129,7 @@ $row2 = mysqli_fetch_assoc($sqlOfficialDetails);
                 Local transport fee in the amount of <b><u><?php echo $row1['amount'] ?></u></b> was paid under the DENR PENRO Official Receipt No. <b><u><?php echo $row1['orNumber'] ?></u></b> dated <b><u><?php echo date('Y-m-d') ?></u></b>.<br>
 
                 This permit is not valid without the dry seal of the signing officer or if it contains erasure of alteration.</p>
-                <div style="display:flex; justify-content:right;"><p style="text-align: center;margin-top:10em"><b><?php echo $row2['oicOfficer'] ?></b><br>OIC - PENRO<br>Officer</p></div>
+                <div style="display:flex; justify-content:right;"><p style="text-align: center;margin-top:5em"><b><?php echo $row2['oicOfficer'] ?></b><br>OIC - PENRO<br>Officer</p></div>
             
 
             </div>
@@ -143,7 +147,7 @@ $row2 = mysqli_fetch_assoc($sqlOfficialDetails);
                 <div style="display:flex; justify-content:right;"><p style="text-align:center; margin-right:3em"><u><?php echo date('Y-m-d') ?></u><br>Date</p></div>
                 
                 
-                <h3 style= "text-align:center;margin-top: 3em;">INSPECTION REPORT OF WILDLIFE</h3>
+                <h3 style= "text-align:center;margin-top: 1em;">INSPECTION REPORT OF WILDLIFE</h3>
                 <div class="doc-details" style="text-align:justify;width:70%;margin:auto;">
                 <p>TO WHOM IT MAY CONCERN<br><br>This is to certify that on this date, the undersigned has undertaken the inspection of wildlife in the <b><u>DENR-PENRO Marinduque </u></b>of  <b><u><?php echo $row['name' ]  ?></u></b  >and has found the following wildlife</p>
                 <table class=doc-table>
@@ -198,10 +202,11 @@ $row2 = mysqli_fetch_assoc($sqlOfficialDetails);
                 <h3 style= "text-align:center;margin-top: 2em;">INSPECTION REPORT OF WILDLIFE</h3>
                 <p>This is to certify that the inspection report of <b><u> <?php echo $row['name'] ?></u></b> the PAWD, Region <b><u> IV-MIMAROPA </u></b> is/are true and correct and has been done this <u><b> <?php echo date('d'); ?> </u></b>day of <u><b> <?php echo date('F-Y'); ?> </u></b>
              This is to certify further that this statement was given me voluntarily and with neither coercion nor promise of reward from the personnel of the Department of Environment and National Resources.</p>
-                <div style="display:flex; justify-content:right;"><p style="text-align: center;margin-top:8em;"><b>MENCHITA D. RADOVAN</b><br>Signature</p><br><br></div>
+                <div style="display:flex; justify-content:right;"><p style="text-align: center;margin-top:3em;"><b>MENCHITA D. RADOVAN</b><br>Signature</p><br><br></div>
             
 
             </div>
+        
         
 
 </div>

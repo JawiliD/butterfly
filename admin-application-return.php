@@ -25,7 +25,7 @@
             <h1>WILDLIFE BUTTERFLY</h1>          
 
         <hr>        
-            <a href="admin-profile.php">PROFILE</a>
+            <a href="admin-profile.php">HOME</a>
             <div id="dropdown">
                 <a id="application">APPLICATION</a>
                 <div id="dropdown-content">

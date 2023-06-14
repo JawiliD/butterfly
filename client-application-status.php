@@ -96,7 +96,7 @@
                                            <td ></td>
                                            <td >' . $row['dateUpdated'].'</td>
                                            <td >' . $row['date'].'</td>
-                                           <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
+                                           <td ><button class="btn bgreenBtn"><a href="client-view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
                                            <td>
                                                
                                            </td>
@@ -132,7 +132,7 @@
                                     <td ></td>
                                     <td >' . $row['dateUpdated'].'</td>
                                     <td >' . $row['date'].'</td>
-                                    <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
+                                    <td ><button class="btn bgreenBtn"><a href="client-view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
                                     <td >'.$row['remarks'].'</td>
                                     <td>
                                         <button class="btn greenBtn" ><a href=\'update-ltr-permit.php?updateid='.$row['id'].'\'>REWORK</a></button>
@@ -170,7 +170,7 @@
                                             <td ></td>
                                             <td >' . $row['dateUpdated'].'</td>
                                             <td >' . $row['date'].'</td>
-                                            <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
+                                            <td ><button class="btn bgreenBtn"><a href="client-view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
                                             <td>                                                
                                             </td>
                                         </tr>';
@@ -205,7 +205,7 @@
                                      <td ></td>
                                      <td >' . $row['dateUpdated'].'</td>
                                      <td >' . $row['date'].'</td>
-                                     <td ><button class="btn bgreenBtn"><a href="view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
+                                     <td ><button class="btn bgreenBtn"><a href="client-view-ltr-permit.php?view-id='. $row['id'].'">VIEW</a></button></td>
                                      <td>
                                      </td>
                                  </tr>';
