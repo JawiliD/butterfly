@@ -1,12 +1,17 @@
 <?php
 include 'config.php';
+$queryRelease = "SELECT * FROM `ltr_permit` WHERE status='released'";
+$sqlRelease = mysqli_query($con, $queryRelease);  
+$row = mysqli_fetch_array($sqlRelease);
 
 if(isset($_POST['release'])){
     $accept_id = isset($_POST['accept-id']) ? $_POST['accept-id'] : null;
     $status = "released";
     date_default_timezone_set("Asia/Manila");
-    $dateTime = date('Y-m-d H:i:s');    
-    $queryReleaseBtn = "UPDATE ltr_permit SET status = '$status', dateReleased = '$dateTime' WHERE id = $accept_id";
+    $dateTime = date('Y-m-d H:i:s');  
+    $releaseDate = $row['dateReleased'];
+    $expirationDate = date('Y-m-d', strtotime($releaseDate . ' +1 days')); 
+    $queryReleaseBtn = "UPDATE ltr_permit SET status = '$status', dateReleased = '$dateTime', expirationDate = '$expirationDate'  WHERE id = $accept_id";
     $sqlReleaseBtn = mysqli_query($con, $queryReleaseBtn);
     if($sqlReleaseBtn){
         header('location:admin-application-accept.php');
@@ -49,7 +54,7 @@ if(isset($_POST['release'])){
             <h1>WILDLIFE BUTTERFLY</h1>          
 
         <hr>        
-            <a href="admin-profile.php">PROFILE</a>
+            <a href="admin-profile.php">HOME</a>
             <div id="dropdown">
                 <a id="application">APPLICATION</a>
                 <div id="dropdown-content">
