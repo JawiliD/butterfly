@@ -1,19 +1,24 @@
 <?php 
 include 'config.php';
-if(isset($_POST['save'])){  
-    $species=$_POST['speciestype'];   
-    $classN=$_POST['classname'];   
-    $familyN=$_POST['familyname'];   
-    $commonN=$_POST['commonname'];   
-    $scientificN=$_POST['scientificname'];   
-    $typeS=$_POST['typeofspecimen'];   
-    $quantity=$_POST['quantity'];   
-    $description=$_POST['description'];   
 
-    $sql="insert into `butterfly` (speciesType,className,familyName,commonName,scientificName,typeOfSpecimen,quantity,description) values('$species','$classN','$familyN','$commonN','$scientificN','$typeS','$quantity','$description')";
-    $result=mysqli_query($con,$sql);
-    if($result){
-        header('location:butterfly.php');
+$id = $_GET['update-id'];
+
+$queryWCP = "SELECT * FROM `wcp_permit` where id=$id";
+$sqlWCP = mysqli_query($con,$queryWCP);
+$row = mysqli_fetch_array($sqlWCP);
+
+if(isset($_POST['save'])){
+    $businessName = $_POST['businessname'];
+    $ownerName = $_POST['ownername'];
+    $address = $_POST['address'];
+    $dateIssue = $_POST['dateissue'];
+    $expiration = $_POST['expiration'];
+    $wcp = $_POST['wcp'];
+
+    $queryUpdateWCP = "UPDATE `wcp_permit` SET wcpNo='$wcp', businessName='$businessName', ownerName = '$ownerName', address='$address', dateIssue='$dateIssue', expirationDate='$expiration' where id=$id";
+    $sqlUpdateWCP = mysqli_query($con,$queryUpdateWCP);
+    if($sqlUpdateWCP){
+        header('location: wildlife-collector.php');
     }else{
         die(mysqli_error($con));
     }
@@ -40,53 +45,51 @@ if(isset($_POST['save'])){
             <li><a href=""><h4>Butterfly</h4></a></li>
             <li class="butterfly"><h4>Wildlife Permit</h4></li>            
             <li><a href="report-home.php"><h4>Report</h4></a></li>
+            <li ><h4></i><a href="logout.php" class="link">Logout</a></h4></li>
         </ul>
     </div>
     <div class="top-header">        
             <h1><img class="penro-logo" src="image/logo2.png" alt="penro-logo"> LOCAL TRANSPORT PERMIT FOR</h1>
-            <h1>WILDLIFE BUTTERFLY</h1>  
+            <h1>WILDLIFE BUTTERFLY</h1> 
          <hr><br>       
         
     </div> 
     <div class="content">   
         <div class="add-butterfly" style="height:30em;">
-            <h2>Wildlife Collector's Details</h2>
+            <h2>Wildlife Collector Details</h2>
             <form method="POST">
                 <table>
                     <tr>
                         <td>
                             <label>Business Name</label><br>
-                            <input name="businessname" type="text" placeholder="Species Type" required="required">
-                        </td> 
+                            <input name="businessname" type="text" placeholder="Species Type" value="<?php echo $row['businessName']; ?>" required="required">
                         <td>
                             <label>Owner's Name</label><br>
-                            <input name="ownersname" type="text" placeholder="Class Name" required="required">
+                            <input name="ownername" type="text" placeholder="Class Name" value="<?php echo $row['ownerName']; ?>" required="required">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>Address</label><br>
-                            <input name="address" type="text" placeholder="Family Name" required="required">
+                            <input name="address" type="text" placeholder="Family Name" value="<?php echo $row['address']; ?>" required="required">
                         </td>                        
                         <td>
                             <label>Date Issue</label><br>
-                            <input name="dateissue" type="text" placeholder="Common Name" required="required">
+                            <input name="dateissue" type="text" placeholder="Common Name" value="<?php echo $row['dateIssue']; ?>" required="required">
                         </td>                         
                     </tr>
                     <tr>
                         <td>
                             <label>Expiration</label><br>
-                            <input name="expiration" type="text" placeholder="Scientific Name" required="required">
+                            <input name="expiration" type="text" placeholder="Scientific Name" value="<?php echo $row['expirationDate']; ?>" required="required">
                         </td>
                         <td>
-                            <label>Quantity</label><br>
-                            <input name="quantity" type="text" placeholder="Type of Specimen" required="required">
+                            <label>WFP No</label><br>
+                            <input name="wcp" type="text" placeholder="Type of Specimen" value="<?php echo $row['wcpNo']; ?>" required="required">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label>Description</label><br>
-                            <input name="description" type="number" placeholder="Quantity" required="required">
                         </td>
                         <td>                            
                         </td>
@@ -102,7 +105,7 @@ if(isset($_POST['save'])){
                         </td>
                     </tr>
                 </table>                            
-            </form>                       
+            </form>                        
         </div>
     </div>
         
